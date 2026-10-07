@@ -365,8 +365,8 @@ export default function Home() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
-          <h2 className="text-display-lg text-warm-paper mb-6">Đường đến Mơ</h2>
-          <p className="text-body-lg text-warm-paper/90 mb-4">Rời phố một chút. Chạm hồ thật gần.</p>
+          <h2 className="text-display-lg text-warm-paper mb-6">{t.directions.title}</h2>
+          <p className="text-body-lg text-warm-paper/90 mb-4">{t.directions.sub}</p>
         </div>
         <div className="space-y-4 mb-12" id="faq">
           <div className="border-b-2 border-warm-paper/20 faq-item">
@@ -403,11 +403,11 @@ export default function Home() {
             <p className="text-body-base text-espresso/80 mb-6">{t.directions.routeDesc}</p>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4 flex-wrap justify-center">
-                <span className="text-body-lg font-semibold text-espresso">Hà Nội</span>
+                <span className="text-body-lg font-semibold text-espresso">{locale === 'en' ? 'Hanoi' : 'Hà Nội'}</span>
                 <span className="text-bamboo-shoot">→</span>
-                <span className="text-body-lg font-semibold text-espresso">Hòa Lạc</span>
+                <span className="text-body-lg font-semibold text-espresso">{locale === 'en' ? 'Hoa Lac' : 'Hòa Lạc'}</span>
                 <span className="text-bamboo-shoot">→</span>
-                <span className="text-body-lg font-semibold text-espresso">Hòa Bình</span>
+                <span className="text-body-lg font-semibold text-espresso">{locale === 'en' ? 'Hoa Binh' : 'Hòa Bình'}</span>
                 <span className="text-bamboo-shoot">→</span>
                 <span className="text-body-lg font-semibold text-terracotta">{locale === "en" ? "Mo Village" : "Xóm Mơ"}</span>
               </div>
@@ -422,52 +422,125 @@ export default function Home() {
   {/*  PACKAGES  */}
   <section id="packages" className="py-16 md:py-24 bg-white bg-warm-paper">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div data-reveal style={{"opacity":"0","transform":"translateY(50px)"}}>
-        <p className="text-body-sm uppercase tracking-wide text-bamboo-shoot mb-4">{t.packages.tagline}</p>
-        <h2 className="text-display-lg font-bold text-espresso mb-12">{t.packages.title}</h2>
+      <div data-reveal>
+        <p className="text-body-sm uppercase tracking-wide text-bamboo-shoot mb-4">
+          {t.packages.tagline}
+        </p>
+        <h2 className="text-display-lg font-bold text-espresso mb-12">
+          {t.packages.title}
+        </h2>
       </div>
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" data-reveal style={{"opacity":"0","transform":"translateY(50px)"}}>
 
-        <div className="bg-warm-paper rounded-lg p-6 relative overflow-hidden bg-soft-sand border-2 border-stilt-timber/20 hover:border-stilt-timber/40 hover:shadow-2xl transition-all duration-500 group flex flex-col">
-          <div className="absolute inset-0 bg-gradient-to-br from-bamboo-shoot/5 via-transparent to-stilt-timber/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div className="absolute top-6 right-6"><div className="px-4 py-1.5 bg-bamboo-shoot rounded-full shadow-lg"><span className="text-body-sm font-semibold text-warm-paper uppercase tracking-wide">Quick Getaway</span></div></div>
+      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" data-reveal>
+
+        {/* Card 1: 2 days 1 night */}
+        <div
+          onClick={() => handleOpenBooking(t.packages.items[0].title)}
+          className="rounded-lg p-6 relative overflow-hidden bg-warm-paper border-2 border-stilt-timber/20 hover:border-stilt-timber/40 hover:shadow-2xl transition-all duration-500 group flex flex-col cursor-pointer"
+        >
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+            style={{ background: 'linear-gradient(to bottom right, rgba(154, 164, 135, 0.05), transparent, rgba(138, 111, 92, 0.1))' }}
+          ></div>
+          <div className="absolute top-6 right-6">
+            <div className="px-4 py-1.5 bg-bamboo-shoot rounded-full shadow-lg">
+              <span className="text-body-sm font-semibold text-warm-paper uppercase tracking-wide">
+                {t.packages.items[0].badge}
+              </span>
+            </div>
+          </div>
           <div className="relative p-10 pt-20 flex-1 flex flex-col">
             <div className="flex items-start justify-between mb-6">
               <div>
-                <h3 className="text-display-sm text-espresso mb-1 font-display">{t.packages.items[0].title}</h3>
-                <p className="text-body-sm text-stilt-timber uppercase tracking-wider">{t.packages.items[0].subtitle}</p>
+                <h3 className="text-display-sm text-espresso mb-1 font-display">
+                  {t.packages.items[0].title}
+                </h3>
+                <p className="text-body-sm text-stilt-timber uppercase tracking-wider">
+                  {t.packages.items[0].subtitle}
+                </p>
               </div>
-              <div className="w-16 h-16 rounded-full bg-bamboo-shoot/10 flex items-center justify-center flex-shrink-0"><span className="text-2xl">🌲</span></div>
+              <div className="w-16 h-16 rounded-full bg-bamboo-shoot/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">🌲</span>
+              </div>
             </div>
-            <div className="mb-8 pb-6 border-b-2 border-bamboo-shoot/20"><p className="text-body-2xl text-terracotta font-bold">{locale === "en" ? "From 1,800,000 VND / guest" : "Từ 1.800.000đ/người"}</p></div>
+            <div className="mb-8 pb-6 border-b-2 border-bamboo-shoot/20">
+              <p className="text-body-2xl text-terracotta font-bold">
+                {locale === 'en' ? 'From 1,800,000đ/person' : 'Từ 1.800.000đ/người'}
+              </p>
+            </div>
             <ul className="space-y-4 flex-1">
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-bamboo-shoot flex items-center justify-center flex-shrink-0"><span className="text-warm-paper text-xs">✓</span></div><span className="text-body-base text-espresso/90 leading-relaxed">{t.packages.items[0].features[0]}</span></li>
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-bamboo-shoot flex items-center justify-center flex-shrink-0"><span className="text-warm-paper text-xs">✓</span></div><span className="text-body-base text-espresso/90 leading-relaxed">{t.packages.items[0].features[1]}</span></li>
+              {t.packages.items[0].features.map((feat: string, idx: number) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <div className="mt-1 w-5 h-5 rounded-full bg-bamboo-shoot flex items-center justify-center flex-shrink-0">
+                    <span className="text-warm-paper text-xs">✓</span>
+                  </div>
+                  <span className="text-body-base text-espresso/90 leading-relaxed">
+                    {feat}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="h-1.5 bg-gradient-to-r from-bamboo-shoot via-stilt-timber to-bamboo-shoot"></div>
+          <div
+            className="h-1.5"
+            style={{ background: 'linear-gradient(to right, #9aa487, #8a6f5c, #9aa487)' }}
+          ></div>
         </div>
 
-        <div className="bg-warm-paper rounded-lg p-6 relative overflow-hidden bg-gradient-to-br from-espresso via-espresso to-espresso/95 text-warm-paper hover:shadow-2xl transition-all duration-500 group border-2 border-apricot-blossom/30 flex flex-col">
-          <div className="absolute top-0 right-0 w-40 h-40 bg-terracotta/15 rounded-bl-full blur-2xl"></div>
-          <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-apricot-blossom/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-6 right-6"><div className="px-4 py-1.5 bg-terracotta rounded-full shadow-lg"><span className="text-body-sm font-semibold text-warm-paper uppercase tracking-wide">{t.packages.items[1].badge}</span></div></div>
+        {/* Card 2: 3 days 2 nights */}
+        <div
+          onClick={() => handleOpenBooking(t.packages.items[1].title)}
+          className="rounded-lg p-6 relative overflow-hidden text-warm-paper hover:shadow-2xl transition-all duration-500 group border-2 border-apricot-blossom/30 flex flex-col cursor-pointer"
+          style={{
+            backgroundColor: '#2c150f',
+            backgroundImage: 'linear-gradient(to bottom right, #2c150f, #2c150f, rgba(44, 21, 15, 0.95))'
+          }}
+        >
+          <div className="absolute top-0 right-0 w-40 h-40 bg-terracotta/15 rounded-bl-full blur-2xl pointer-events-none"></div>
+          <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-apricot-blossom/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute top-6 right-6">
+            <div className="px-4 py-1.5 bg-terracotta rounded-full shadow-lg">
+              <span className="text-body-sm font-semibold text-warm-paper uppercase tracking-wide">
+                {t.packages.items[1].badge}
+              </span>
+            </div>
+          </div>
           <div className="relative p-10 pt-20 flex-1 flex flex-col">
             <div className="flex items-start justify-between mb-6">
               <div>
-                <h3 className="text-display-sm text-warm-paper mb-1 font-display">{t.packages.items[1].title}</h3>
-                <p className="text-body-sm text-apricot-blossom uppercase tracking-wider">{t.packages.items[1].subtitle}</p>
+                <h3 className="text-display-sm text-warm-paper mb-1 font-display">
+                  {t.packages.items[1].title}
+                </h3>
+                <p className="text-body-sm text-apricot-blossom uppercase tracking-wider">
+                  {t.packages.items[1].subtitle}
+                </p>
               </div>
-              <div className="w-16 h-16 rounded-full bg-apricot-blossom/20 flex items-center justify-center flex-shrink-0"><span className="text-2xl">✨</span></div>
+              <div className="w-16 h-16 rounded-full bg-apricot-blossom/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">✨</span>
+              </div>
             </div>
-            <div className="mb-8 pb-6 border-b-2 border-apricot-blossom/30"><p className="text-body-2xl text-apricot-blossom font-bold">{locale === "en" ? "From 3,200,000 VND / guest" : "Từ 3.200.000đ/người"}</p></div>
+            <div className="mb-8 pb-6 border-b-2 border-apricot-blossom/30">
+              <p className="text-body-2xl text-apricot-blossom font-bold">
+                {locale === 'en' ? 'From 3,200,000đ/person' : 'Từ 3.200.000đ/người'}
+              </p>
+            </div>
             <ul className="space-y-4 flex-1">
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">{t.packages.items[1].features[0]}</span></li>
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">{t.packages.items[1].features[1]}</span></li>
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">{t.packages.items[1].features[2]}</span></li>
+              {t.packages.items[1].features.map((feat: string, idx: number) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0">
+                    <span className="text-espresso text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-body-base text-warm-paper/95 leading-relaxed">
+                    {feat}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="h-1.5 bg-gradient-to-r from-apricot-blossom via-terracotta to-apricot-blossom"></div>
+          <div
+            className="h-1.5"
+            style={{ background: 'linear-gradient(to right, #d8c1bc, #b56e5a, #d8c1bc)' }}
+          ></div>
         </div>
 
       </div>

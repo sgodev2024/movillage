@@ -28,6 +28,19 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
     { id: 'Nhà Táo', label: locale === 'en' ? 'Apple House' : 'Nhà Táo' },
   ];
 
+  const getCategoryLabel = (cat: string) => {
+    if (locale !== 'en') return cat;
+    const map: Record<string, string> = {
+      'Nhà Cộng Đồng': 'Community House',
+      'Nhà Đào': 'Peach House',
+      'Nhà Mận': 'Plum House',
+      'Nhà Mít': 'Jackfruit House',
+      'Nhà Sang': 'Sang Villa',
+      'Nhà Táo': 'Apple House',
+    };
+    return map[cat] || cat;
+  };
+
   const allRooms: RoomItem[] = t.rooms?.items || [];
 
   const filteredRooms = allRooms.filter((room: RoomItem) => {
@@ -48,7 +61,7 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
   return (
     <section id="rooms" className="py-16 md:py-24 bg-soft-sand/70 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="mb-12 text-center max-w-3xl mx-auto">
           <p className="text-body-sm uppercase tracking-[0.2em] text-bamboo-shoot font-semibold mb-3">
@@ -78,17 +91,15 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                   setSelectedCategory(cat.id);
                   setShowAll(false);
                 }}
-                className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                  isActive
+                className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer flex items-center gap-2 ${isActive
                     ? 'bg-terracotta text-warm-paper shadow-md shadow-terracotta/25 scale-105'
                     : 'bg-warm-paper text-espresso/80 hover:bg-white hover:text-espresso border border-stilt-timber/25 shadow-xs'
-                }`}
+                  }`}
               >
                 <span>{cat.label}</span>
                 <span
-                  className={`text-[11px] px-2 py-0.5 rounded-full ${
-                    isActive ? 'bg-warm-paper/30 text-warm-paper font-bold' : 'bg-stilt-timber/15 text-espresso/80'
-                  }`}
+                  className={`text-[11px] px-2 py-0.5 rounded-full ${isActive ? 'bg-warm-paper/30 text-warm-paper font-bold' : 'bg-stilt-timber/15 text-espresso/80'
+                    }`}
                 >
                   {count}
                 </span>
@@ -126,17 +137,17 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                     {/* Top Badges: Category on left, Capacity on right */}
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5 flex-wrap max-w-[70%]">
-                        <span className="px-2.5 py-1 bg-terracotta text-warm-paper text-[11px] font-semibold rounded-full shadow-md whitespace-nowrap">
-                          {room.category}
+                        <span className="px-3 py-1 bg-terracotta text-warm-paper text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                          {getCategoryLabel(room.category)}
                         </span>
                         {room.code && (
-                          <span className="px-2 py-0.5 bg-black/60 backdrop-blur-xs text-warm-paper text-[10px] font-medium rounded-full whitespace-nowrap">
+                          <span className="px-3 py-1 bg-black/70 backdrop-blur-md text-warm-paper text-xs font-semibold rounded-full shadow-md border border-white/15 whitespace-nowrap">
                             {room.code}
                           </span>
                         )}
                       </div>
 
-                      <div className="px-2.5 py-1 bg-bamboo-shoot text-white text-[11px] font-semibold rounded-full shadow-md flex items-center gap-1 backdrop-blur-xs shrink-0">
+                      <div className="px-3 py-1 bg-bamboo-shoot text-white text-xs font-semibold rounded-full shadow-md flex items-center gap-1.5 backdrop-blur-xs shrink-0">
                         <Users className="w-3.5 h-3.5" />
                         <span>{room.capacity}</span>
                       </div>
@@ -150,9 +161,9 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="px-3 py-1 bg-white/95 hover:bg-white text-espresso text-[11px] font-semibold rounded-full shadow-lg flex items-center gap-1.5 transition-all hover:scale-105 cursor-pointer"
+                          className="px-3.5 py-1.5 bg-white/95 hover:bg-white text-espresso text-xs font-semibold rounded-full shadow-lg flex items-center gap-1.5 transition-all hover:scale-105 cursor-pointer border border-white/80 backdrop-blur-xs"
                         >
-                          <Sparkles className="w-3 h-3 text-terracotta" />
+                          <Sparkles className="w-3.5 h-3.5 text-terracotta shrink-0" />
                           <span>VR 360°</span>
                         </a>
                       </div>
@@ -186,7 +197,7 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                         );
                       })}
                       {galleryList.length > 5 && (
-                        <span className="text-[11px] font-semibold text-espresso/60 px-1">
+                        <span className="text-[11px] font-semibold text-espresso/70 px-2 py-0.5 bg-warm-paper/80 rounded-md shrink-0">
                           +{galleryList.length - 5}
                         </span>
                       )}
@@ -204,68 +215,73 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                       </div>
 
                       {/* Tagline / Subtitle */}
-                      <p className="text-body-sm text-espresso/80 leading-relaxed mb-4 line-clamp-2">
+                      <p className="text-body-sm text-espresso/80 leading-relaxed mb-4 line-clamp-2 min-h-[2.5rem]">
                         {room.tagline}
                       </p>
 
                       {/* Key Specs Pills Grid */}
-                      <div className="grid grid-cols-2 gap-2 bg-white/90 p-3 rounded-xl border border-stilt-timber/15 mb-4 text-xs">
-                        <div className="flex items-center gap-2 text-espresso/90 overflow-hidden">
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 bg-white/95 px-4 py-3 sm:px-4.5 sm:py-3.5 rounded-xl border border-stilt-timber/20 mb-4 text-xs shadow-2xs">
+                        <div className="flex items-center gap-2 text-espresso/90 min-w-0">
                           <Users className="w-3.5 h-3.5 text-terracotta shrink-0" />
-                          <span className="truncate" title={room.capacity}>{room.capacity}</span>
+                          <span className="truncate font-medium" title={room.capacity}>{room.capacity}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-espresso/90 overflow-hidden">
+                        <div className="flex items-center gap-2 text-espresso/90 min-w-0">
                           <Bed className="w-3.5 h-3.5 text-stilt-timber shrink-0" />
-                          <span className="truncate" title={room.bedType}>{room.bedType}</span>
+                          <span className="truncate font-medium" title={room.bedType}>{room.bedType}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-espresso/90 overflow-hidden">
+                        <div className="flex items-center gap-2 text-espresso/90 min-w-0">
                           <Maximize2 className="w-3.5 h-3.5 text-lake-dawn shrink-0" />
-                          <span className="truncate" title={room.area}>{room.area}</span>
+                          <span className="truncate font-medium" title={room.area}>{room.area}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-espresso/90 overflow-hidden">
+                        <div className="flex items-center gap-2 text-espresso/90 min-w-0">
                           <Compass className="w-3.5 h-3.5 text-bamboo-shoot shrink-0" />
-                          <span className="truncate" title={room.view}>{room.view}</span>
+                          <span className="truncate font-medium" title={room.view}>{room.view}</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Highlight Features */}
+                    {/* Highlight Features - show unique highlights not duplicating key specs */}
                     <ul className="space-y-1.5 pt-1">
-                      {room.features.slice(0, 3).map((feat: string, fIdx: number) => (
-                        <li key={fIdx} className="flex items-center gap-2 text-xs text-espresso/80">
-                          <Check className="w-3.5 h-3.5 text-bamboo-shoot shrink-0" />
-                          <span className="line-clamp-1">{feat}</span>
-                        </li>
-                      ))}
+                      {room.features
+                        .filter((feat: string) => !feat.startsWith('Diện tích:') && !feat.startsWith('Giường:') && !feat.startsWith('Area:') && !feat.startsWith('Bed:'))
+                        .slice(0, 3)
+                        .map((feat: string, fIdx: number) => (
+                          <li key={fIdx} className="flex items-center gap-2 text-xs text-espresso/80">
+                            <Check className="w-3.5 h-3.5 text-bamboo-shoot shrink-0" />
+                            <span className="line-clamp-1">{feat}</span>
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </div>
 
-                {/* Bottom Price & Action Footer */}
+                {/* Bottom Price & Action Footer - Perfectly aligned with content */}
                 <div className="border-t border-stilt-timber/15 bg-warm-paper">
-                  <div className="px-5 py-4 flex items-center justify-between gap-3">
+                  <div className="px-5 sm:px-6 py-4 flex items-center justify-between gap-3">
                     <div>
-                      <span className="text-[10px] uppercase tracking-wider text-stilt-timber block font-semibold">
+                      <span className="text-[10px] uppercase tracking-wider text-stilt-timber block font-semibold leading-none mb-1">
                         {locale === 'en' ? 'Room Rate' : 'Giá phòng'}
                       </span>
                       <div className="flex items-baseline gap-1">
-                        <span className="text-lg sm:text-xl font-bold text-terracotta font-display">
+                        <span className="text-lg sm:text-xl font-bold text-terracotta font-display leading-tight">
                           {room.pricePerNight || (locale === 'en' ? 'Contact us' : 'Liên hệ')}
                         </span>
                         {room.pricePerNight && (
-                          <span className="text-[11px] text-espresso/60 font-normal">{locale === 'en' ? '/ night' : '/ đêm'}</span>
+                          <span className="text-[11px] text-espresso/60 font-normal">
+                            {locale === 'en' ? '/ night' : '/ đêm'}
+                          </span>
                         )}
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 shrink-0">
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedRoom(room);
                         }}
-                        className="px-3.5 py-2 bg-white hover:bg-soft-sand text-espresso text-xs font-semibold rounded-lg border border-stilt-timber/25 transition-all cursor-pointer shadow-xs active:scale-95"
+                        className="px-4 py-2 bg-white hover:bg-soft-sand text-espresso text-xs font-semibold rounded-xl border border-stilt-timber/25 transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
                       >
                         {locale === 'en' ? 'Details' : 'Chi tiết'}
                       </button>
@@ -275,10 +291,10 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                           e.stopPropagation();
                           onOpenBooking(room.name);
                         }}
-                        className="px-4 py-2 bg-terracotta hover:bg-[#a15f4d] text-warm-paper text-xs font-semibold rounded-lg transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-1.5 active:scale-95"
+                        className="px-4.5 py-2 bg-terracotta hover:bg-[#a15f4d] text-warm-paper text-xs font-semibold rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-1.5 active:scale-95"
                       >
                         <span>{locale === 'en' ? 'Book Now' : 'Đặt ngay'}</span>
-                        <ArrowRight className="w-3 h-3" />
+                        <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
@@ -304,7 +320,11 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                 </>
               ) : (
                 <>
-                  <span>{locale === 'en' ? `View more (${filteredRooms.length - 6} other rooms)` : `Xem thêm (${filteredRooms.length - 6} phòng khác)`}</span>
+                  <span>
+                    {locale === 'en'
+                      ? `View more (${filteredRooms.length - 6} more rooms)`
+                      : `Xem thêm (${filteredRooms.length - 6} phòng khác)`}
+                  </span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
