@@ -12,20 +12,20 @@ interface RoomsSectionProps {
 }
 
 export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [selectedRoom, setSelectedRoom] = useState<RoomItem | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showAll, setShowAll] = useState<boolean>(false);
   const [activeImageMap, setActiveImageMap] = useState<Record<string, string>>({});
 
   const categories = [
-    { id: 'all', label: 'Tất cả' },
-    { id: 'Nhà Cộng Đồng', label: 'Nhà Cộng Đồng' },
-    { id: 'Nhà Đào', label: 'Nhà Đào' },
-    { id: 'Nhà Mận', label: 'Nhà Mận' },
-    { id: 'Nhà Mít', label: 'Nhà Mít' },
-    { id: 'Nhà Sang', label: 'Nhà Sang' },
-    { id: 'Nhà Táo', label: 'Nhà Táo' },
+    { id: 'all', label: locale === 'en' ? 'All' : 'Tất cả' },
+    { id: 'Nhà Cộng Đồng', label: locale === 'en' ? 'Community House' : 'Nhà Cộng Đồng' },
+    { id: 'Nhà Đào', label: locale === 'en' ? 'Peach House' : 'Nhà Đào' },
+    { id: 'Nhà Mận', label: locale === 'en' ? 'Plum House' : 'Nhà Mận' },
+    { id: 'Nhà Mít', label: locale === 'en' ? 'Jackfruit House' : 'Nhà Mít' },
+    { id: 'Nhà Sang', label: locale === 'en' ? 'Sang Villa' : 'Nhà Sang' },
+    { id: 'Nhà Táo', label: locale === 'en' ? 'Apple House' : 'Nhà Táo' },
   ];
 
   const allRooms: RoomItem[] = t.rooms?.items || [];
@@ -246,14 +246,14 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                   <div className="px-5 py-4 flex items-center justify-between gap-3">
                     <div>
                       <span className="text-[10px] uppercase tracking-wider text-stilt-timber block font-semibold">
-                        Giá phòng
+                        {locale === 'en' ? 'Room Rate' : 'Giá phòng'}
                       </span>
                       <div className="flex items-baseline gap-1">
                         <span className="text-lg sm:text-xl font-bold text-terracotta font-display">
-                          {room.pricePerNight || 'Liên hệ'}
+                          {room.pricePerNight || (locale === 'en' ? 'Contact us' : 'Liên hệ')}
                         </span>
                         {room.pricePerNight && (
-                          <span className="text-[11px] text-espresso/60 font-normal">/ đêm</span>
+                          <span className="text-[11px] text-espresso/60 font-normal">{locale === 'en' ? '/ night' : '/ đêm'}</span>
                         )}
                       </div>
                     </div>
@@ -267,7 +267,7 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                         }}
                         className="px-3.5 py-2 bg-white hover:bg-soft-sand text-espresso text-xs font-semibold rounded-lg border border-stilt-timber/25 transition-all cursor-pointer shadow-xs active:scale-95"
                       >
-                        Chi tiết
+                        {locale === 'en' ? 'Details' : 'Chi tiết'}
                       </button>
                       <button
                         type="button"
@@ -277,7 +277,7 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                         }}
                         className="px-4 py-2 bg-terracotta hover:bg-[#a15f4d] text-warm-paper text-xs font-semibold rounded-lg transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-1.5 active:scale-95"
                       >
-                        <span>Đặt ngay</span>
+                        <span>{locale === 'en' ? 'Book Now' : 'Đặt ngay'}</span>
                         <ArrowRight className="w-3 h-3" />
                       </button>
                     </div>
@@ -300,11 +300,11 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
             >
               {showAll ? (
                 <>
-                  <span>Thu gọn danh sách</span>
+                  <span>{locale === 'en' ? 'Collapse list' : 'Thu gọn danh sách'}</span>
                 </>
               ) : (
                 <>
-                  <span>Xem thêm ({filteredRooms.length - 6} phòng khác)</span>
+                  <span>{locale === 'en' ? `View more (${filteredRooms.length - 6} other rooms)` : `Xem thêm (${filteredRooms.length - 6} phòng khác)`}</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

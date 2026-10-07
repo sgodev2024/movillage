@@ -6,7 +6,7 @@ import { RoomsSection } from '@/components/RoomsSection';
 import { BookingModal } from '@/components/BookingModal';
 
 export default function Home() {
-  const { locale, toggleLocale } = useLanguage();
+  const { locale, toggleLocale, t } = useLanguage();
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [bookingRoomName, setBookingRoomName] = useState<string | undefined>(undefined);
 
@@ -161,13 +161,13 @@ export default function Home() {
         <img alt="Mơ Village" className="object-contain object-left" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/logo-horizontal.svg" />
       </a>
       <div className="hidden md:flex items-center gap-8">
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#story">Câu chuyện</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#rooms">Phòng nghỉ</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#experiences">Trải nghiệm</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#gallery">Thư viện</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#directions">Đường đến Mơ</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#packages">Gói dịch vụ</a>
-        <button className="bg-terracotta hover:bg-terracotta/90 text-warm-paper px-6 py-2 rounded-lg transition-colors cursor-pointer" onClick={() => handleOpenBooking()}>Đặt chỗ nghỉ</button>
+        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#story">{t.nav.story}</a>
+        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#rooms">{t.nav.rooms}</a>
+        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#experiences">{t.nav.experiences}</a>
+        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#gallery">{t.nav.gallery}</a>
+        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#directions">{t.nav.directions}</a>
+        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#packages">{t.nav.packages}</a>
+        <button className="bg-terracotta hover:bg-terracotta/90 text-warm-paper px-6 py-2 rounded-lg transition-colors cursor-pointer" onClick={() => handleOpenBooking()}>{t.nav.bookNow}</button>
         <button onClick={toggleLocale} className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-soft-sand transition-colors cursor-pointer" aria-label="Change language">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,187a113.4,113.4,0,0,1-20.39-35h40.82a116.94,116.94,0,0,1-10,20.77A108.61,108.61,0,0,1,128,207Zm-26.49-59a135.42,135.42,0,0,1,0-40h53a135.42,135.42,0,0,1,0,40ZM44,128a83.49,83.49,0,0,1,2.43-20H77.25a160.63,160.63,0,0,0,0,40H46.43A83.49,83.49,0,0,1,44,128Zm84-79a113.4,113.4,0,0,1,20.39,35H107.59a116.94,116.94,0,0,1,10-20.77A108.61,108.61,0,0,1,128,49Zm50.73,59h30.82a83.52,83.52,0,0,1,0,40H178.75a160.63,160.63,0,0,0,0-40Zm20.77-24H173.71a140.82,140.82,0,0,0-15.5-34.36A84.51,84.51,0,0,1,199.52,84ZM97.79,49.64A140.82,140.82,0,0,0,82.29,84H56.48A84.51,84.51,0,0,1,97.79,49.64ZM56.48,172H82.29a140.82,140.82,0,0,0,15.5,34.36A84.51,84.51,0,0,1,56.48,172Zm101.73,34.36A140.82,140.82,0,0,0,173.71,172h25.81A84.51,84.51,0,0,1,158.21,206.36Z"></path></svg>
           <span className="text-sm font-semibold uppercase">{locale}</span>
@@ -179,13 +179,13 @@ export default function Home() {
     </div>
   </div>
   <div className="mobile-menu md:hidden bg-warm-paper border-t border-karst-mist" id="mobile-menu">
-    <a href="#story">Câu chuyện</a>
-    <a href="#rooms">Phòng nghỉ</a>
-    <a href="#experiences">Trải nghiệm</a>
-    <a href="#gallery">Thư viện</a>
-    <a href="#directions">Đường đến Mơ</a>
-    <a href="#packages">Gói dịch vụ</a>
-    <a href="#booking" onClick={(e) => { e.preventDefault(); handleOpenBooking(); }}>Đặt chỗ nghỉ</a>
+    <a href="#story">{t.nav.story}</a>
+    <a href="#rooms">{t.nav.rooms}</a>
+    <a href="#experiences">{t.nav.experiences}</a>
+    <a href="#gallery">{t.nav.gallery}</a>
+    <a href="#directions">{t.nav.directions}</a>
+    <a href="#packages">{t.nav.packages}</a>
+    <a href="#booking" onClick={(e) => { e.preventDefault(); handleOpenBooking(); }}>{t.nav.bookNow}</a>
   </div>
 </nav>
 
@@ -202,10 +202,10 @@ export default function Home() {
         <div className="relative w-[33.8rem] h-[15.2rem] sm:w-[50.7rem] sm:h-[20.3rem] lg:w-[60.8rem] lg:h-[25.4rem] mx-auto mb-6">
           <img alt="Mơ Village" className="object-contain drop-shadow-2xl" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/logo-stacked.svg" />
         </div>
-        <p className="text-body-lg sm:text-body-2xl lg:text-display-sm mb-6 text-warm-paper drop-shadow max-w-2xl mx-auto px-4">Một giấc mơ dịu trên mặt hồ Hòa Bình</p>
+        <p className="text-body-lg sm:text-body-2xl lg:text-display-sm mb-6 text-warm-paper drop-shadow max-w-2xl mx-auto px-4">{t.hero.title}</p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center px-4">
-          <button onClick={() => handleOpenBooking()} className="bg-terracotta hover:bg-terracotta/90 text-warm-paper px-6 py-3 sm:px-8 sm:py-4 rounded-lg text-ui-sm sm:text-ui-base transition-colors w-auto cursor-pointer">Đặt chỗ nghỉ của bạn</button>
-          <a href="#rooms" className="bg-warm-paper/20 backdrop-blur-sm hover:bg-warm-paper/30 text-warm-paper px-6 py-3 sm:px-8 sm:py-4 rounded-lg text-ui-sm sm:text-ui-base transition-colors border border-warm-paper/30 w-auto">Xem phòng</a>
+          <a href="#booking" onClick={(e) => { e.preventDefault(); handleOpenBooking(); }} className="bg-terracotta hover:bg-terracotta/90 text-warm-paper px-6 py-3 sm:px-8 sm:py-4 rounded-lg text-ui-sm sm:text-ui-base transition-colors w-auto cursor-pointer">{t.hero.ctaPrimary}</a>
+          <a href="#rooms" className="bg-warm-paper/20 backdrop-blur-sm hover:bg-warm-paper/30 text-warm-paper px-6 py-3 sm:px-8 sm:py-4 rounded-lg text-ui-sm sm:text-ui-base transition-colors border border-warm-paper/30 w-auto">{t.hero.ctaSecondary}</a>
         </div>
       </div>
     </div>
@@ -215,9 +215,9 @@ export default function Home() {
   <section id="story" className="py-16 md:py-24 bg-white bg-warm-paper">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-        <p className="text-body-sm uppercase tracking-wide text-stilt-timber mb-4">Chuyện của Mơ</p>
-        <h2 className="text-display-lg text-espresso mb-6">Một giấc mơ dịu trên mặt hồ Hòa Bình</h2>
-        <p className="text-body-lg text-espresso/80 mb-12 max-w-3xl">Mơ Village là khu nghỉ dưỡng ven hồ kết hợp sự bình yên của nước, sương mù, rừng cây với sự ấm áp của kiến trúc nhà sàn Mường. Một nơi hiện đại, nhẹ nhàng kỳ ảo để nghỉ ngơi, kết nối và khám phá.</p>
+        <p className="text-body-sm uppercase tracking-wide text-stilt-timber mb-4">{t.story.tagline}</p>
+        <h2 className="text-display-lg text-espresso mb-6">{t.story.title}</h2>
+        <p className="text-body-lg text-espresso/80 mb-12 max-w-3xl">{t.story.lead}</p>
       </div>
       <div className="grid md:grid-cols-3 gap-8 mt-16">
         <div className="flex flex-col gap-6" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
@@ -225,8 +225,8 @@ export default function Home() {
             <img alt="Hồ Hòa Bình" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/campus-dji0135.webp" />
           </div>
           <div>
-            <h3 className="text-display-sm text-espresso mb-4">Hồ Hòa Bình</h3>
-            <p className="text-body-base text-espresso/90">Hồ nhân tạo lớn nhất Việt Nam, hình thành từ đập thủy điện Hòa Bình năm 1994. Diện tích 230 km², sâu tới 40m, với cảnh sương mù huyền ảo vào buổi sáng.</p>
+            <h3 className="text-display-sm text-espresso mb-4">{t.story.cards[0].title}</h3>
+            <p className="text-body-base text-espresso/90">{t.story.cards[0].desc}</p>
           </div>
         </div>
         <div className="flex flex-col gap-6" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
@@ -234,8 +234,8 @@ export default function Home() {
             <img alt="Đà Bắc - Hòa Bình" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/campus-dji0107.webp" />
           </div>
           <div>
-            <h3 className="text-display-sm text-espresso mb-4">Đà Bắc - Hòa Bình</h3>
-            <p className="text-body-base text-espresso/90">Cách Hà Nội 100km (2 giờ lái xe). Vùng đất của người Mường với văn hóa truyền thống đậm đà. Khí hậu mát mẻ quanh năm, nhiều thác nước và hang động.</p>
+            <h3 className="text-display-sm text-espresso mb-4">{t.story.cards[1].title}</h3>
+            <p className="text-body-base text-espresso/90">{t.story.cards[1].desc}</p>
           </div>
         </div>
         <div className="flex flex-col gap-6" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
@@ -243,8 +243,8 @@ export default function Home() {
             <img alt="Kiến trúc nhà sàn" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/nh-mn-img2934.webp" />
           </div>
           <div>
-            <h3 className="text-display-sm text-espresso mb-4">Kiến trúc nhà sàn</h3>
-            <p className="text-body-base text-espresso/90">Lấy cảm hứng từ nhà sàn truyền thống Mường với cột gỗ, mái lợp tranh, và không gian thoáng. Kết hợp hài hòa giữa di sản văn hóa và tiện nghi hiện đại.</p>
+            <h3 className="text-display-sm text-espresso mb-4">{t.story.cards[2].title}</h3>
+            <p className="text-body-base text-espresso/90">{t.story.cards[2].desc}</p>
           </div>
         </div>
       </div>
@@ -268,69 +268,69 @@ export default function Home() {
         <div className="relative w-48 h-48 mx-auto mb-8">
           <img alt="Mơ Village" className="object-contain" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/logo-reversed-white.svg" />
         </div>
-        <p className="text-body-sm uppercase tracking-wide mb-4 text-apricot-blossom">Trải nghiệm</p>
-        <h2 className="text-display-lg text-warm-paper mb-6">Khám phá và tận hưởng</h2>
-        <p className="text-body-base text-warm-paper/90">Từ hoạt động phiêu lưu đến workshop nghệ thuật, mỗi trải nghiệm là một kỷ niệm</p>
+        <p className="text-body-sm uppercase tracking-wide mb-4 text-apricot-blossom">{t.experiences.tagline}</p>
+        <h2 className="text-display-lg text-warm-paper mb-6">{t.experiences.title}</h2>
+        <p className="text-body-base text-warm-paper/90">{t.experiences.sub}</p>
       </div>
 
       <div className="mb-16">
-        <h3 className="text-display-sm text-warm-paper mb-8">Hoạt động tại Mơ</h3>
+        <h3 className="text-display-sm text-warm-paper mb-8">{t.experiences.categories.facilities}</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
             <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
               <div className="relative aspect-[16/10]"><img alt="Bể sục Onsen 4 mùa" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/be-suc-dji0124.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Bể sục Onsen 4 mùa</h4><p className="text-body-base text-espresso/90">Thư giãn trong bể sục nước nóng tự nhiên giữa không gian núi rừng</p></div>
+              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[0].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[0].desc}</p></div>
             </div>
           </div>
           <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
             <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
               <div className="relative aspect-[16/10]"><img alt="Phòng xông ướt, xông khô" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/phong-xong-img2969.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Phòng xông ướt, xông khô</h4><p className="text-body-base text-espresso/90">Xông hơi thải độc, làm sạch cơ thể và tâm trí</p></div>
+              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[1].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[1].desc}</p></div>
             </div>
           </div>
           <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
             <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
               <div className="relative aspect-[16/10]"><img alt="Ngâm bồn thuốc thảo dược" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/ngam-bon-img4506.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Ngâm bồn thuốc thảo dược</h4><p className="text-body-base text-espresso/90">Ngâm mình trong các loại thảo dược thiên nhiên, phục hồi năng lượng</p></div>
+              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[2].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[2].desc}</p></div>
             </div>
           </div>
           <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
             <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
               <div className="relative aspect-[16/10]"><img alt="Giải trí trên hồ" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/giai-tri-tren-ho-img4621.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Giải trí trên hồ</h4><p className="text-body-base text-espresso/90">Kayak, cano, câu cá - khám phá hồ Hòa Bình bằng nhiều cách</p></div>
+              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[3].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[3].desc}</p></div>
             </div>
           </div>
           <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
             <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
               <div className="relative aspect-[16/10]"><img alt="Tour thuyền thăm quan" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/tour-thuyen-dji0157.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Tour thuyền thăm quan</h4><p className="text-body-base text-espresso/90">Du thuyền ngắm hoàng hôn, ghé thăm làng nổi và làng cá</p></div>
+              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[4].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[4].desc}</p></div>
             </div>
           </div>
           <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
             <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
               <div className="relative aspect-[16/10]"><img alt="Team Building" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/team-building-dji0111.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Team Building</h4><p className="text-body-base text-espresso/90">Tổ chức team building cho công ty và nhóm lớn với hoạt động ngoài trời và không gian riêng tư</p></div>
+              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[5].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[5].desc}</p></div>
             </div>
           </div>
         </div>
       </div>
 
       <div>
-        <h3 className="text-display-sm text-warm-paper mb-8">Workshop & văn hóa</h3>
+        <h3 className="text-display-sm text-warm-paper mb-8">{t.experiences.categories.workshops}</h3>
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">Cắm hoa</h4><p className="text-body-base text-espresso/90">Workshop cắm hoa phong cách tự nhiên với hoa địa phương, thể hiện vẻ đẹp giản dị của núi rừng Hòa Bình</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">Làm bánh</h4><p className="text-body-base text-espresso/90">Học làm bánh truyền thống Mường như bánh dày, cốm, và các món bánh hiện đại từ nguyên liệu địa phương</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">Thủ công</h4><p className="text-body-base text-espresso/90">Dệt thổ cẩm Mường với họa tiết truyền thống, làm đồ gỗ, và học các nghề thủ công từ người dân bản địa</p></div>
+          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.workshopsList[0].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.workshopsList[0].desc}</p></div>
+          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.workshopsList[1].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.workshopsList[1].desc}</p></div>
+          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.workshopsList[2].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.workshopsList[2].desc}</p></div>
         </div>
       </div>
 
       <div className="mt-16" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-        <h3 className="text-display-sm text-warm-paper mb-8">Điểm đến lân cận</h3>
+        <h3 className="text-display-sm text-warm-paper mb-8">{t.experiences.categories.nearby}</h3>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Chúa Thác Bờ</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">Thác nước hùng vĩ cao 300m với cảnh quan tráng lệ, nơi du khách có thể chiêm ngưỡng thiên nhiên hoang sơ và chụp ảnh check-in đẹp mắt</p><p className="text-body-sm text-stilt-timber">15km</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Suối Ké</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">Suối đá tự nhiên trong vắt với dòng nước mát lạnh quanh năm, nơi lý tưởng để tắm mát và thư giãn giữa thiên nhiên</p><p className="text-body-sm text-stilt-timber">8km</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Hang Lỗ Làn</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">Hang động tự nhiên với nhũ đá hình thành hàng nghìn năm, một kỳ quan địa chất độc đáo của vùng núi đá vôi Hòa Bình</p><p className="text-body-sm text-stilt-timber">12km</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">Bản Sưng</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">Bản làng Mường truyền thống giữ gìn văn hóa bản địa, nơi bạn có thể trải nghiệm lối sống, trang phục và ẩm thực của người Mường</p><p className="text-body-sm text-stilt-timber">10km</p></div>
+          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.nearbyList[0].title}</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">{t.experiences.nearbyList[0].desc}</p><p className="text-body-sm text-stilt-timber">15km</p></div>
+          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.nearbyList[1].title}</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">{t.experiences.nearbyList[1].desc}</p><p className="text-body-sm text-stilt-timber">8km</p></div>
+          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.nearbyList[2].title}</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">{t.experiences.nearbyList[2].desc}</p><p className="text-body-sm text-stilt-timber">12km</p></div>
+          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.nearbyList[3].title}</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">{t.experiences.nearbyList[3].desc}</p><p className="text-body-sm text-stilt-timber">10km</p></div>
         </div>
       </div>
     </div>
@@ -339,7 +339,7 @@ export default function Home() {
   {/*  GALLERY  */}
   <section id="gallery" className="py-16 md:py-24 bg-white bg-soft-sand">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-display-lg font-bold text-espresso mb-12">Thư viện ảnh</h2>
+      <h2 className="text-display-lg font-bold text-espresso mb-12">{t.gallery.title}</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
         <div className="relative rounded-lg overflow-hidden bg-[#D4C4B0]" data-reveal style={{"opacity":"0","transform":"scale(0.95)"}}><img alt="Gallery image 1" className="object-cover hover:scale-105 transition-transform duration-500" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/campus-dji0135.webp" /></div>
         <div className="relative rounded-lg overflow-hidden bg-[#D4C4B0]" data-reveal style={{"opacity":"0","transform":"scale(0.95)"}}><img alt="Gallery image 2" className="object-cover hover:scale-105 transition-transform duration-500" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/nh-sang.webp" /></div>
@@ -371,36 +371,36 @@ export default function Home() {
         <div className="space-y-4 mb-12" id="faq">
           <div className="border-b-2 border-warm-paper/20 faq-item">
             <button className="faq-trigger w-full py-6 flex items-center justify-between text-left hover:bg-warm-paper/10 transition-colors px-4 rounded-lg">
-              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">01</span><span className="text-body-lg font-semibold text-warm-paper">Mơ cách Hà Nội bao xa?</span></div>
+              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">01</span><span className="text-body-lg font-semibold text-warm-paper">{t.directions.faqs[0].question}</span></div>
               <span className="text-2xl text-terracotta faq-sign">+</span>
             </button>
-            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">Mơ nằm bên hồ Hòa Bình, tại khu vực Đà Bắc, cách Hà Nội hơn 100 km. Thời gian di chuyển thường khoảng 3–3,5 giờ tùy cung đường và điều kiện giao thông.</p></div></div>
+            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">{t.directions.faqs[0].answer}</p></div></div>
           </div>
           <div className="border-b-2 border-warm-paper/20 faq-item">
             <button className="faq-trigger w-full py-6 flex items-center justify-between text-left hover:bg-warm-paper/10 transition-colors px-4 rounded-lg">
-              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">02</span><span className="text-body-lg font-semibold text-warm-paper">Đến Mơ có thể làm gì?</span></div>
+              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">02</span><span className="text-body-lg font-semibold text-warm-paper">{t.directions.faqs[1].question}</span></div>
               <span className="text-2xl text-terracotta faq-sign">+</span>
             </button>
-            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">Bạn có thể chèo kayak, bơi giữa núi rừng, thư giãn tại bể sục, xông hơi, đọc sách, câu cá, dùng bữa vị Tây Bắc hoặc đơn giản là dành trọn một ngày không vội.</p></div></div>
+            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">{t.directions.faqs[1].answer}</p></div></div>
           </div>
           <div className="border-b-2 border-warm-paper/20 faq-item">
             <button className="faq-trigger w-full py-6 flex items-center justify-between text-left hover:bg-warm-paper/10 transition-colors px-4 rounded-lg">
-              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">03</span><span className="text-body-lg font-semibold text-warm-paper">Mơ có phù hợp với gia đình và đoàn nhỏ?</span></div>
+              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">03</span><span className="text-body-lg font-semibold text-warm-paper">{t.directions.faqs[2].question}</span></div>
               <span className="text-2xl text-terracotta faq-sign">+</span>
             </button>
-            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">Có. Mơ có nhiều hạng phòng, khu vui chơi trẻ nhỏ, sân cỏ và không gian chung. Khi nhắn đặt phòng, Mơ sẽ gợi ý cách bố trí phù hợp với số người và độ tuổi.</p></div></div>
+            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">{t.directions.faqs[2].answer}</p></div></div>
           </div>
           <div className="border-b-2 border-warm-paper/20 faq-item">
             <button className="faq-trigger w-full py-6 flex items-center justify-between text-left hover:bg-warm-paper/10 transition-colors px-4 rounded-lg">
-              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">04</span><span className="text-body-lg font-semibold text-warm-paper">Nên đặt phòng trước bao lâu?</span></div>
+              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">04</span><span className="text-body-lg font-semibold text-warm-paper">{t.directions.faqs[3].question}</span></div>
               <span className="text-2xl text-terracotta faq-sign">+</span>
             </button>
-            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">Với cuối tuần và dịp lễ, bạn nên liên hệ sớm để giữ hạng phòng mong muốn. Giá và ưu đãi thay đổi theo ngày, vì vậy Mơ sẽ báo trực tiếp cho từng kỳ nghỉ.</p></div></div>
+            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">{t.directions.faqs[3].answer}</p></div></div>
           </div>
         </div>
         <div className="mt-12">
           <div className="p-8 bg-warm-paper/95 backdrop-blur-sm rounded-lg">
-            <p className="text-body-base text-espresso/80 mb-6">Từ trung tâm Hà Nội, hành trình hơn 100 km đưa bạn qua những triền núi và đường ven hồ. Cung đường đẹp, có đoạn đèo dốc — hãy đi thong thả, Mơ vẫn ở đây chờ.</p>
+            <p className="text-body-base text-espresso/80 mb-6">{t.directions.routeDesc}</p>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4 flex-wrap justify-center">
                 <span className="text-body-lg font-semibold text-espresso">Hà Nội</span>
@@ -409,9 +409,9 @@ export default function Home() {
                 <span className="text-bamboo-shoot">→</span>
                 <span className="text-body-lg font-semibold text-espresso">Hòa Bình</span>
                 <span className="text-bamboo-shoot">→</span>
-                <span className="text-body-lg font-semibold text-terracotta">Xóm Mơ</span>
+                <span className="text-body-lg font-semibold text-terracotta">{locale === "en" ? "Mo Village" : "Xóm Mơ"}</span>
               </div>
-              <a href="https://maps.app.goo.gl/7gk7cRHAvQdimFi39" target="_blank" rel="noopener noreferrer" className="inline-block bg-terracotta hover:bg-terracotta/90 text-warm-paper px-6 py-3 rounded-lg text-ui-base transition-colors whitespace-nowrap">Chỉ đường</a>
+              <a href="https://maps.app.goo.gl/7gk7cRHAvQdimFi39" target="_blank" rel="noopener noreferrer" className="inline-block bg-terracotta hover:bg-terracotta/90 text-warm-paper px-6 py-3 rounded-lg text-ui-base transition-colors whitespace-nowrap">{t.directions.openGoogleMaps}</a>
             </div>
           </div>
         </div>
@@ -423,8 +423,8 @@ export default function Home() {
   <section id="packages" className="py-16 md:py-24 bg-white bg-warm-paper">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div data-reveal style={{"opacity":"0","transform":"translateY(50px)"}}>
-        <p className="text-body-sm uppercase tracking-wide text-bamboo-shoot mb-4">Gói & Dịch vụ</p>
-        <h2 className="text-display-lg font-bold text-espresso mb-12">Các gói combo & dịch vụ</h2>
+        <p className="text-body-sm uppercase tracking-wide text-bamboo-shoot mb-4">{t.packages.tagline}</p>
+        <h2 className="text-display-lg font-bold text-espresso mb-12">{t.packages.title}</h2>
       </div>
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" data-reveal style={{"opacity":"0","transform":"translateY(50px)"}}>
 
@@ -434,15 +434,15 @@ export default function Home() {
           <div className="relative p-10 pt-20 flex-1 flex flex-col">
             <div className="flex items-start justify-between mb-6">
               <div>
-                <h3 className="text-display-sm text-espresso mb-1 font-display">2 ngày 1 đêm</h3>
-                <p className="text-body-sm text-stilt-timber uppercase tracking-wider">Weekend Escape</p>
+                <h3 className="text-display-sm text-espresso mb-1 font-display">{t.packages.items[0].title}</h3>
+                <p className="text-body-sm text-stilt-timber uppercase tracking-wider">{t.packages.items[0].subtitle}</p>
               </div>
               <div className="w-16 h-16 rounded-full bg-bamboo-shoot/10 flex items-center justify-center flex-shrink-0"><span className="text-2xl">🌲</span></div>
             </div>
-            <div className="mb-8 pb-6 border-b-2 border-bamboo-shoot/20"><p className="text-body-2xl text-terracotta font-bold">Từ 1.800.000đ/người</p></div>
+            <div className="mb-8 pb-6 border-b-2 border-bamboo-shoot/20"><p className="text-body-2xl text-terracotta font-bold">{locale === "en" ? "From 1,800,000 VND / guest" : "Từ 1.800.000đ/người"}</p></div>
             <ul className="space-y-4 flex-1">
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-bamboo-shoot flex items-center justify-center flex-shrink-0"><span className="text-warm-paper text-xs">✓</span></div><span className="text-body-base text-espresso/90 leading-relaxed">1 đêm nghỉ + ăn sáng + 1 bữa chính</span></li>
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-bamboo-shoot flex items-center justify-center flex-shrink-0"><span className="text-warm-paper text-xs">✓</span></div><span className="text-body-base text-espresso/90 leading-relaxed">Chèo kayak hoặc câu cá + sử dụng hồ bơi, sàn yoga</span></li>
+              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-bamboo-shoot flex items-center justify-center flex-shrink-0"><span className="text-warm-paper text-xs">✓</span></div><span className="text-body-base text-espresso/90 leading-relaxed">{t.packages.items[0].features[0]}</span></li>
+              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-bamboo-shoot flex items-center justify-center flex-shrink-0"><span className="text-warm-paper text-xs">✓</span></div><span className="text-body-base text-espresso/90 leading-relaxed">{t.packages.items[0].features[1]}</span></li>
             </ul>
           </div>
           <div className="h-1.5 bg-gradient-to-r from-bamboo-shoot via-stilt-timber to-bamboo-shoot"></div>
@@ -451,20 +451,20 @@ export default function Home() {
         <div className="bg-warm-paper rounded-lg p-6 relative overflow-hidden bg-gradient-to-br from-espresso via-espresso to-espresso/95 text-warm-paper hover:shadow-2xl transition-all duration-500 group border-2 border-apricot-blossom/30 flex flex-col">
           <div className="absolute top-0 right-0 w-40 h-40 bg-terracotta/15 rounded-bl-full blur-2xl"></div>
           <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-apricot-blossom/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-6 right-6"><div className="px-4 py-1.5 bg-terracotta rounded-full shadow-lg"><span className="text-body-sm font-semibold text-warm-paper uppercase tracking-wide">Phổ biến</span></div></div>
+          <div className="absolute top-6 right-6"><div className="px-4 py-1.5 bg-terracotta rounded-full shadow-lg"><span className="text-body-sm font-semibold text-warm-paper uppercase tracking-wide">{t.packages.items[1].badge}</span></div></div>
           <div className="relative p-10 pt-20 flex-1 flex flex-col">
             <div className="flex items-start justify-between mb-6">
               <div>
-                <h3 className="text-display-sm text-warm-paper mb-1 font-display">3 ngày 2 đêm</h3>
-                <p className="text-body-sm text-apricot-blossom uppercase tracking-wider">Complete Experience</p>
+                <h3 className="text-display-sm text-warm-paper mb-1 font-display">{t.packages.items[1].title}</h3>
+                <p className="text-body-sm text-apricot-blossom uppercase tracking-wider">{t.packages.items[1].subtitle}</p>
               </div>
               <div className="w-16 h-16 rounded-full bg-apricot-blossom/20 flex items-center justify-center flex-shrink-0"><span className="text-2xl">✨</span></div>
             </div>
-            <div className="mb-8 pb-6 border-b-2 border-apricot-blossom/30"><p className="text-body-2xl text-apricot-blossom font-bold">Từ 3.200.000đ/người</p></div>
+            <div className="mb-8 pb-6 border-b-2 border-apricot-blossom/30"><p className="text-body-2xl text-apricot-blossom font-bold">{locale === "en" ? "From 3,200,000 VND / guest" : "Từ 3.200.000đ/người"}</p></div>
             <ul className="space-y-4 flex-1">
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">2 đêm nghỉ + ăn sáng + 2 bữa chính</span></li>
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">Tour thuyền hoàng hôn + 1 workshop (cắm hoa hoặc làm bánh)</span></li>
-              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">Spa massage 60 phút + sử dụng đầy đủ tiện ích</span></li>
+              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">{t.packages.items[1].features[0]}</span></li>
+              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">{t.packages.items[1].features[1]}</span></li>
+              <li className="flex items-start gap-3"><div className="mt-1 w-5 h-5 rounded-full bg-apricot-blossom flex items-center justify-center flex-shrink-0"><span className="text-espresso text-xs font-bold">✓</span></div><span className="text-body-base text-warm-paper/95 leading-relaxed">{t.packages.items[1].features[2]}</span></li>
             </ul>
           </div>
           <div className="h-1.5 bg-gradient-to-r from-apricot-blossom via-terracotta to-apricot-blossom"></div>
@@ -482,10 +482,10 @@ export default function Home() {
     </div>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="text-center max-w-3xl mx-auto" data-reveal style={{"opacity":"0","transform":"translateY(30px)"}}>
-        <p className="text-body-sm uppercase tracking-[0.2em] text-apricot-blossom mb-4">GỬI MỘT LỜI HẸN</p>
-        <h2 className="text-display-xl font-bold text-warm-paper mb-6 leading-tight">Cuối tuần này, mình đi Mơ nhé?</h2>
-        <p className="text-body-lg text-warm-paper/90 mb-8 leading-relaxed">Chọn ngày, chọn người đồng hành. Phần biên văn chuẩn bị, để Mơ chuẩn bị.</p>
-        <button onClick={() => handleOpenBooking()} className="px-6 py-3 rounded-lg font-medium transition-colors bg-terracotta hover:bg-terracotta/90 text-warm-paper px-12 py-4 cursor-pointer">Đặt chỗ nghỉ</button>
+        <p className="text-body-sm uppercase tracking-[0.2em] text-apricot-blossom mb-4">{t.booking.tagline}</p>
+        <h2 className="text-display-xl font-bold text-warm-paper mb-6 leading-tight">{t.booking.title}</h2>
+        <p className="text-body-lg text-warm-paper/90 mb-8 leading-relaxed">{t.booking.sub}</p>
+        <button onClick={() => handleOpenBooking()} className="px-6 py-3 rounded-lg font-medium transition-colors bg-terracotta hover:bg-terracotta/90 text-warm-paper px-12 py-4 cursor-pointer">{t.nav.bookNow}</button>
       </div>
     </div>
   </section>
