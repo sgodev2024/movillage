@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { RoomsSection } from '@/components/RoomsSection';
 import { BookingModal } from '@/components/BookingModal';
+import { Header } from '@/components/Header';
+import Link from 'next/link';
 
 export default function Home() {
   const { locale, toggleLocale, t } = useLanguage();
@@ -16,27 +18,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    /* ---------- Mobile menu ---------- */
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-
-    const handleToggleClick = () => {
-      if (!menu || !toggle) return;
-      const open = menu.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(open));
-    };
-
-    const handleMenuClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName === 'A' && menu && toggle) {
-        menu.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    };
-
-    if (toggle) toggle.addEventListener('click', handleToggleClick);
-    if (menu) menu.addEventListener('click', handleMenuClick);
-
     /* ---------- FAQ accordion ---------- */
     const faqBtns = document.querySelectorAll('.faq-trigger');
     const handleFaqClick = function (this: HTMLButtonElement) {
@@ -141,8 +122,6 @@ export default function Home() {
     }
 
     return () => {
-      if (toggle) toggle.removeEventListener('click', handleToggleClick);
-      if (menu) menu.removeEventListener('click', handleMenuClick);
       faqBtns.forEach((btn) => {
         btn.removeEventListener('click', handleFaqClick as EventListener);
       });
@@ -154,40 +133,11 @@ export default function Home() {
 
   return (
     <>
-<nav className="fixed top-0 w-full bg-warm-paper/95 backdrop-blur-sm z-50 border-b border-karst-mist">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex items-center justify-between h-16">
-      <a className="relative h-12 w-48" href="#top" aria-label="Mơ Village">
-        <img alt="Mơ Village" className="object-contain object-left" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/logo-horizontal.svg" />
-      </a>
-      <div className="hidden md:flex items-center gap-8">
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#story">{t.nav.story}</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#rooms">{t.nav.rooms}</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#experiences">{t.nav.experiences}</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#gallery">{t.nav.gallery}</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#directions">{t.nav.directions}</a>
-        <a className="text-espresso hover:text-stilt-timber transition-colors" href="#packages">{t.nav.packages}</a>
-        <button className="bg-terracotta hover:bg-terracotta/90 text-warm-paper px-6 py-2 rounded-lg transition-colors cursor-pointer" onClick={() => handleOpenBooking()}>{t.nav.bookNow}</button>
-        <button onClick={toggleLocale} className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-soft-sand transition-colors cursor-pointer" aria-label="Change language">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,187a113.4,113.4,0,0,1-20.39-35h40.82a116.94,116.94,0,0,1-10,20.77A108.61,108.61,0,0,1,128,207Zm-26.49-59a135.42,135.42,0,0,1,0-40h53a135.42,135.42,0,0,1,0,40ZM44,128a83.49,83.49,0,0,1,2.43-20H77.25a160.63,160.63,0,0,0,0,40H46.43A83.49,83.49,0,0,1,44,128Zm84-79a113.4,113.4,0,0,1,20.39,35H107.59a116.94,116.94,0,0,1,10-20.77A108.61,108.61,0,0,1,128,49Zm50.73,59h30.82a83.52,83.52,0,0,1,0,40H178.75a160.63,160.63,0,0,0,0-40Zm20.77-24H173.71a140.82,140.82,0,0,0-15.5-34.36A84.51,84.51,0,0,1,199.52,84ZM97.79,49.64A140.82,140.82,0,0,0,82.29,84H56.48A84.51,84.51,0,0,1,97.79,49.64ZM56.48,172H82.29a140.82,140.82,0,0,0,15.5,34.36A84.51,84.51,0,0,1,56.48,172Zm101.73,34.36A140.82,140.82,0,0,0,173.71,172h25.81A84.51,84.51,0,0,1,158.21,206.36Z"></path></svg>
-          <span className="text-sm font-semibold uppercase">{locale}</span>
-        </button>
-      </div>
-      <button className="md:hidden p-2 text-espresso" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
-      </button>
-    </div>
-  </div>
-  <div className="mobile-menu md:hidden bg-warm-paper border-t border-karst-mist" id="mobile-menu">
-    <a href="#story">{t.nav.story}</a>
-    <a href="#rooms">{t.nav.rooms}</a>
-    <a href="#experiences">{t.nav.experiences}</a>
-    <a href="#gallery">{t.nav.gallery}</a>
-    <a href="#directions">{t.nav.directions}</a>
-    <a href="#packages">{t.nav.packages}</a>
-    <a href="#booking" onClick={(e) => { e.preventDefault(); handleOpenBooking(); }}>{t.nav.bookNow}</a>
-  </div>
-</nav>
+      <Header
+        onOpenBooking={() => handleOpenBooking()}
+        currentPath="/"
+        position="fixed"
+      />
 
 <main id="top">
   {/*  HERO  */}
@@ -355,6 +305,18 @@ export default function Home() {
         <div className="relative rounded-lg overflow-hidden bg-[#D4C4B0]" data-reveal style={{"opacity":"0","transform":"scale(0.95)"}}><img alt="Gallery image 12" className="object-cover hover:scale-105 transition-transform duration-500" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/nh-o-img2981.webp" /></div>
         <div className="relative rounded-lg overflow-hidden bg-[#D4C4B0]" data-reveal style={{"opacity":"0","transform":"scale(0.95)"}}><img alt="Gallery image 13" className="object-cover hover:scale-105 transition-transform duration-500" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/facility-img2970.webp" /></div>
         <div className="relative rounded-lg overflow-hidden bg-[#D4C4B0]" data-reveal style={{"opacity":"0","transform":"scale(0.95)"}}><img alt="Gallery image 14" className="object-cover hover:scale-105 transition-transform duration-500" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/facility-a7309145.webp" /></div>
+      </div>
+      <div className="mt-12 text-center">
+        <Link
+          href="/gallery"
+          className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-terracotta hover:bg-terracotta/90 text-warm-paper rounded-lg font-medium text-ui-base transition-all duration-300 shadow-md hover:scale-[1.02] cursor-pointer"
+        >
+          <span>{locale === 'en' ? 'Explore Full Photo Gallery' : 'Khám phá Thư viện ảnh đầy đủ'}</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </Link>
       </div>
     </div>
   </section>

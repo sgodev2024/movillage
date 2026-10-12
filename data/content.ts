@@ -1126,7 +1126,7 @@ export const siteContent = {
       '/images/rooms/img-2945-1781666658(2).webp'
     ],
             tagline: 'Luxury double room with soaking bathtub and private balcony overlooking Hòa Bình Lake.',
-            pricePerNight: '1,950,000 VND',
+            pricePerNight: '1,950,000 đ',
             features: [
                   'Area: 32m²',
                   'Bed: 1 King bed (2m x 2m)',
@@ -1168,7 +1168,7 @@ export const siteContent = {
       '/images/rooms/anh-phong-dorm-8-pax-1781768028(1).webp'
     ],
             tagline: 'Cozy 8-guest dorm with 2 private bathrooms, ideal for friend groups.',
-            pricePerNight: '3,500,000 VND',
+            pricePerNight: '3,500,000 đ',
             features: [
                   'Area: 60m²',
                   '8 single futons (1.1m x 2m)',
@@ -1208,7 +1208,7 @@ export const siteContent = {
       '/images/rooms/img-8443-1781684257(1).webp'
     ],
             tagline: 'Charming wooden floor room with 3 futons, peaceful garden view and great value.',
-            pricePerNight: '750,000 VND',
+            pricePerNight: '750,000 đ',
             features: [
                   'Area: 14m²',
                   'Wooden floor with 3 futons (1.1m x 2m)',
@@ -1248,7 +1248,7 @@ export const siteContent = {
       '/images/rooms/dorm-20-1781685707(2).webp'
     ],
             tagline: 'Grand 130m² stilt house dorm, 4 bathrooms/4 WCs, wide balcony overlooking the lake.',
-            pricePerNight: '7,500,000 VND',
+            pricePerNight: '7,500,000 đ',
             features: [
                   'Area: 130m² full floor',
                   '20 premium single futons (1.1m x 2m)',
@@ -1288,7 +1288,7 @@ export const siteContent = {
       '/images/rooms/view-phong-ngu-1781686716(2).webp'
     ],
             tagline: 'Deluxe room with panoramic lake view, warm wooden decor and private balcony.',
-            pricePerNight: '1,500,000 VND',
+            pricePerNight: '1,500,000 đ',
             features: [
                   'Area: 24m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1330,7 +1330,7 @@ export const siteContent = {
       '/images/rooms/view-phong-ngu-1781687060.webp'
     ],
             tagline: 'Airy double room with serene lake view, peaceful retreat amidst nature.',
-            pricePerNight: '1,500,000 VND',
+            pricePerNight: '1,500,000 đ',
             features: [
                   'Area: 24m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1371,7 +1371,7 @@ export const siteContent = {
       '/images/rooms/view-phong-ngu-1781687455(2).webp'
     ],
             tagline: 'Quiet double room overlooking lush garden and lake, ideal for relaxing getaways.',
-            pricePerNight: '1,500,000 VND',
+            pricePerNight: '1,500,000 đ',
             features: [
                   'Area: 24m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1413,7 +1413,7 @@ export const siteContent = {
       '/images/rooms/view-phong-ngu-1781687640(2).webp'
     ],
             tagline: 'Cozy retreat room with romantic lake view, modern boutique comfort.',
-            pricePerNight: '1,500,000 VND',
+            pricePerNight: '1,500,000 đ',
             features: [
                   'Area: 24m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1456,7 +1456,7 @@ export const siteContent = {
       '/images/rooms/1ii41ffkf-bnv1up-1781688765(2).webp'
     ],
             tagline: 'Spacious family room with 2 large beds, lake and pool view for family vacations.',
-            pricePerNight: '2,800,000 VND',
+            pricePerNight: '2,800,000 đ',
             features: [
                   'Area: 48m²',
                   'Beds: 1 Queen (1.8m x 2m) + 1 Double (1.6m x 2m)',
@@ -1500,7 +1500,7 @@ export const siteContent = {
       '/images/rooms/view-phong-ngu-1-1781689295(2).webp'
     ],
             tagline: 'Comfortable family suite with lake and garden view, ideal for multi-generational vacations.',
-            pricePerNight: '2,800,000 VND',
+            pricePerNight: '2,800,000 đ',
             features: [
                   'Area: 48m²',
                   'Beds: 1 Queen (1.8m x 2m) + 1 Double (1.6m x 2m)',
@@ -1539,7 +1539,7 @@ export const siteContent = {
       '/images/rooms/img-1765180079175-1765247763983-1781691197(2).webp'
     ],
             tagline: 'Executive 60m² family stilt villa suite with 2 bedrooms, premium wooden terrace.',
-            pricePerNight: '3,200,000 VND',
+            pricePerNight: '3,200,000 đ',
             features: [
                   'Area: 60m²',
                   '2 Queen beds (1.8m x 2m)',
@@ -1582,7 +1582,7 @@ export const siteContent = {
       '/images/rooms/img-20260513-231412-1781748252(2).webp'
     ],
             tagline: 'Deluxe executive room with lake view balcony, queen bed and soaking tub.',
-            pricePerNight: '1,850,000 VND',
+            pricePerNight: '1,850,000 đ',
             features: [
                   'Area: 31m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1624,7 +1624,7 @@ export const siteContent = {
       '/images/rooms/view-phong-ngu-2-1781748609(2).webp'
     ],
             tagline: 'Executive double room with panoramic lake and pool view, elegant wooden interiors.',
-            pricePerNight: '1,850,000 VND',
+            pricePerNight: '1,850,000 đ',
             features: [
                   'Area: 31m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1665,7 +1665,7 @@ export const siteContent = {
       '/images/rooms/img-8413-1781749267(2).webp'
     ],
             tagline: 'Boutique lake-facing room with private terrace and tranquil forest breeze.',
-            pricePerNight: '1,850,000 VND',
+            pricePerNight: '1,850,000 đ',
             features: [
                   'Area: 31m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1708,7 +1708,7 @@ export const siteContent = {
       '/images/rooms/deluxe-premium-101-1781749784(2).webp'
     ],
             tagline: 'High-floor premium double room, open airy view across Hòa Bình lake.',
-            pricePerNight: '1,850,000 VND',
+            pricePerNight: '1,850,000 đ',
             features: [
                   'Area: 31m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1752,7 +1752,7 @@ export const siteContent = {
       '/images/rooms/view-ho-1781750371(2).webp'
     ],
             tagline: 'Premium room with tranquil balcony, romantic atmosphere for couples.',
-            pricePerNight: '1,850,000 VND',
+            pricePerNight: '1,850,000 đ',
             features: [
                   'Area: 31m²',
                   'Bed: 1 Queen bed (1.8m x 2m)',
@@ -1795,7 +1795,7 @@ export const siteContent = {
       '/images/rooms/trong-phong-1781750947(2).webp'
     ],
             tagline: 'Charming wooden stilt room with forest view, bathtub and private balcony.',
-            pricePerNight: '1,950,000 VND',
+            pricePerNight: '1,950,000 đ',
             features: [
                   'Area: 32m²',
                   'Bed: 1 King bed (2m x 2m)',
@@ -1839,7 +1839,7 @@ export const siteContent = {
       '/images/rooms/suite-lake-view-1781751326(2).webp'
     ],
             tagline: 'Cozy stilt house room with deep forest view, private bathtub and wooden deck.',
-            pricePerNight: '1,950,000 VND',
+            pricePerNight: '1,950,000 đ',
             features: [
                   'Area: 32m²',
                   'Bed: 1 King bed (2m x 2m)',
@@ -1882,7 +1882,7 @@ export const siteContent = {
       '/images/rooms/036913d5e5df33816ace128-1781751843(2).webp'
     ],
             tagline: 'Panoramic lake view suite with romantic soaking tub and spacious balcony.',
-            pricePerNight: '1,950,000 VND',
+            pricePerNight: '1,950,000 đ',
             features: [
                   'Area: 32m²',
                   'Bed: 1 King bed (2m x 2m)',
@@ -1926,7 +1926,7 @@ export const siteContent = {
       '/images/rooms/20250725-080819-1781752900(2).webp'
     ],
             tagline: 'Spacious villa with 3 bedrooms, fully equipped kitchen and private BBQ terrace.',
-            pricePerNight: '3,800,000 VND',
+            pricePerNight: '3,800,000 đ',
             features: [
                   'Area: 60m² villa',
                   '2 Queen beds (1.8m x 2m)',

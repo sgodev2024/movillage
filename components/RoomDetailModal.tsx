@@ -72,7 +72,7 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
         onClick={(e) => e.stopPropagation()}
       >
         {/* 1. TOP STICKY HEADER */}
-        <div className="shrink-0 bg-warm-paper/95 backdrop-blur-md border-b border-stilt-timber/15 px-4 sm:px-6 py-3 flex items-center justify-between z-30">
+        <div className="shrink-0 bg-warm-paper/95 backdrop-blur-md border-b border-stilt-timber/15 px-6 sm:px-8 py-4.5 sm:py-5 min-h-[64px] flex items-center justify-between z-30">
           <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
             <span className="text-xs font-bold text-terracotta uppercase tracking-wider bg-terracotta/10 px-2.5 py-0.5 rounded-full shrink-0">
               {getCategoryLabel(room.category)}
@@ -90,7 +90,7 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-soft-sand hover:bg-stilt-timber/20 text-espresso flex items-center justify-center active:scale-95 transition-all cursor-pointer shrink-0 ml-3 shadow-2xs"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-soft-sand hover:bg-stilt-timber/25 text-espresso inline-flex items-center justify-center active:scale-95 transition-colors cursor-pointer shrink-0 ml-3 shadow-2xs"
             aria-label={locale === 'en' ? 'Close modal' : 'Đóng modal'}
           >
             <X className="w-4.5 h-4.5" />
@@ -98,9 +98,9 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
         </div>
 
         {/* 2. SCROLLABLE CONTENT BODY */}
-        <div className="overflow-y-auto flex-1 p-4 sm:p-5 md:p-6 space-y-3.5 sm:space-y-4">
+        <div className="overflow-y-auto flex-1 p-5 sm:p-6 md:p-8 space-y-4 sm:space-y-5">
           {/* Panoramic Hero Image */}
-          <div className="relative aspect-[21/9] sm:aspect-[2.35/1] max-h-[230px] sm:max-h-[260px] rounded-2xl overflow-hidden bg-espresso/10 border border-stilt-timber/15 shadow-inner">
+          <div className="relative w-full aspect-[16/9] sm:aspect-[2/1] md:aspect-[2.2/1] rounded-2xl overflow-hidden bg-espresso/10 border border-stilt-timber/15 shadow-inner">
             <Image
               src={currentImage}
               alt={room.name}
@@ -174,15 +174,15 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
             </div>
 
             {room.pricePerNight && (
-              <div className="text-left sm:text-right shrink-0 bg-white/80 px-3.5 py-2 rounded-xl border border-stilt-timber/20 shadow-2xs">
-                <span className="text-[10px] sm:text-[11px] text-espresso/60 block font-medium uppercase tracking-wider">
+              <div className="text-left sm:text-right shrink-0">
+                <span className="text-[10px] sm:text-[11px] text-espresso/60 block font-semibold uppercase tracking-wider">
                   {locale === 'en' ? 'Room Rate' : 'Giá phòng'}
                 </span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-lg sm:text-xl font-bold text-terracotta font-display">
+                  <span className="text-xl sm:text-2xl font-bold text-terracotta font-display">
                     {room.pricePerNight}
                   </span>
-                  <span className="text-[10px] sm:text-[11px] text-espresso/60">
+                  <span className="text-[11px] text-espresso/60 font-medium">
                     {locale === 'en' ? '/ night' : '/ đêm'}
                   </span>
                 </div>
@@ -190,74 +190,72 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
             )}
           </div>
 
-          {/* BẢNG CHI TIẾT THÔNG SỐ PHÒNG - 4 Columns in 1 Row on desktop */}
-          <div className="bg-white/90 p-3 sm:p-3.5 rounded-2xl border border-stilt-timber/20 shadow-2xs">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
-              {/* Sức chứa */}
-              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-soft-sand/50 border border-stilt-timber/10">
-                <div className="w-8 h-8 rounded-lg bg-warm-paper flex items-center justify-center text-bamboo-shoot shrink-0 shadow-2xs">
-                  <Users className="w-4 h-4" />
-                </div>
-                <div className="text-xs min-w-0 flex-1">
-                  <span className="text-espresso/60 block text-[10px] uppercase tracking-wider font-semibold leading-tight">
-                    {locale === 'en' ? 'Capacity' : 'Sức chứa'}
-                  </span>
-                  <span className="font-bold text-espresso truncate block text-xs mt-0.5" title={room.capacity}>
-                    {room.capacity}
-                  </span>
-                </div>
+          {/* BẢNG CHI TIẾT THÔNG SỐ PHÒNG - Chuẩn hóa kích cỡ đồng nhất, không lồng card */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 py-1">
+            {/* Sức chứa */}
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-soft-sand/60 border border-stilt-timber/15 min-h-[64px]">
+              <div className="w-9 h-9 rounded-lg bg-warm-paper flex items-center justify-center text-bamboo-shoot shrink-0">
+                <Users className="w-4.5 h-4.5" />
               </div>
-
-              {/* Giường ngủ */}
-              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-soft-sand/50 border border-stilt-timber/10">
-                <div className="w-8 h-8 rounded-lg bg-warm-paper flex items-center justify-center text-stilt-timber shrink-0 shadow-2xs">
-                  <Bed className="w-4 h-4" />
-                </div>
-                <div className="text-xs min-w-0 flex-1">
-                  <span className="text-espresso/60 block text-[10px] uppercase tracking-wider font-semibold leading-tight">
-                    {locale === 'en' ? 'Beds' : 'Giường ngủ'}
-                  </span>
-                  <span className="font-bold text-espresso truncate block text-xs mt-0.5" title={room.bedType}>
-                    {room.bedType}
-                  </span>
-                </div>
+              <div className="text-xs min-w-0 flex-1">
+                <span className="text-espresso/60 block text-[10px] uppercase tracking-wider font-semibold leading-tight mb-0.5">
+                  {locale === 'en' ? 'Capacity' : 'Sức chứa'}
+                </span>
+                <span className="font-bold text-espresso truncate block text-xs leading-tight" title={room.capacity}>
+                  {room.capacity}
+                </span>
               </div>
+            </div>
 
-              {/* Diện tích */}
-              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-soft-sand/50 border border-stilt-timber/10">
-                <div className="w-8 h-8 rounded-lg bg-warm-paper flex items-center justify-center text-lake-dawn shrink-0 shadow-2xs">
-                  <Maximize2 className="w-4 h-4" />
-                </div>
-                <div className="text-xs min-w-0 flex-1">
-                  <span className="text-espresso/60 block text-[10px] uppercase tracking-wider font-semibold leading-tight">
-                    {locale === 'en' ? 'Area' : 'Diện tích'}
-                  </span>
-                  <span className="font-bold text-espresso truncate block text-xs mt-0.5">
-                    {room.area || (locale === 'en' ? 'Standard' : 'Tiêu chuẩn')}
-                  </span>
-                </div>
+            {/* Giường ngủ */}
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-soft-sand/60 border border-stilt-timber/15 min-h-[64px]">
+              <div className="w-9 h-9 rounded-lg bg-warm-paper flex items-center justify-center text-stilt-timber shrink-0">
+                <Bed className="w-4.5 h-4.5" />
               </div>
+              <div className="text-xs min-w-0 flex-1">
+                <span className="text-espresso/60 block text-[10px] uppercase tracking-wider font-semibold leading-tight mb-0.5">
+                  {locale === 'en' ? 'Beds' : 'Giường ngủ'}
+                </span>
+                <span className="font-bold text-espresso truncate block text-xs leading-tight" title={room.bedType}>
+                  {room.bedType}
+                </span>
+              </div>
+            </div>
 
-              {/* Tầm nhìn */}
-              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-soft-sand/50 border border-stilt-timber/10">
-                <div className="w-8 h-8 rounded-lg bg-warm-paper flex items-center justify-center text-terracotta shrink-0 shadow-2xs">
-                  <Eye className="w-4 h-4" />
-                </div>
-                <div className="text-xs min-w-0 flex-1">
-                  <span className="text-espresso/60 block text-[10px] uppercase tracking-wider font-semibold leading-tight">
-                    {locale === 'en' ? 'View' : 'Tầm nhìn'}
-                  </span>
-                  <span className="font-bold text-espresso truncate block text-xs mt-0.5" title={room.view}>
-                    {room.view}
-                  </span>
-                </div>
+            {/* Diện tích */}
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-soft-sand/60 border border-stilt-timber/15 min-h-[64px]">
+              <div className="w-9 h-9 rounded-lg bg-warm-paper flex items-center justify-center text-lake-dawn shrink-0">
+                <Maximize2 className="w-4.5 h-4.5" />
+              </div>
+              <div className="text-xs min-w-0 flex-1">
+                <span className="text-espresso/60 block text-[10px] uppercase tracking-wider font-semibold leading-tight mb-0.5">
+                  {locale === 'en' ? 'Area' : 'Diện tích'}
+                </span>
+                <span className="font-bold text-espresso truncate block text-xs leading-tight">
+                  {room.area || (locale === 'en' ? 'Standard' : 'Tiêu chuẩn')}
+                </span>
+              </div>
+            </div>
+
+            {/* Tầm nhìn */}
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-soft-sand/60 border border-stilt-timber/15 min-h-[64px]">
+              <div className="w-9 h-9 rounded-lg bg-warm-paper flex items-center justify-center text-terracotta shrink-0">
+                <Eye className="w-4.5 h-4.5" />
+              </div>
+              <div className="text-xs min-w-0 flex-1">
+                <span className="text-espresso/60 block text-[10px] uppercase tracking-wider font-semibold leading-tight mb-0.5">
+                  {locale === 'en' ? 'View' : 'Tầm nhìn'}
+                </span>
+                <span className="font-bold text-espresso truncate block text-xs leading-tight" title={room.view}>
+                  {room.view}
+                </span>
               </div>
             </div>
           </div>
 
           {/* Description */}
-          <div className="bg-white/70 p-3.5 sm:p-4.5 rounded-2xl border border-stilt-timber/15">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-espresso/70 mb-1.5 flex items-center gap-1.5">
+          <div className="p-4 sm:p-5 rounded-2xl bg-soft-sand/35 border border-stilt-timber/15">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-espresso/70 mb-2 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-terracotta" />
               <span>{locale === 'en' ? 'Overview & Room Standards' : 'Giới thiệu & Tiêu chuẩn phòng'}</span>
             </h4>
@@ -267,32 +265,32 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
           </div>
 
           {/* Highlights & Amenities */}
-          <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-4">
-            <div className="bg-white/70 p-3.5 sm:p-4 rounded-2xl border border-stilt-timber/15 flex flex-col">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-espresso/70 mb-2.5 flex items-center gap-1.5">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-soft-sand/35 border border-stilt-timber/15 flex flex-col">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-espresso/70 mb-3 flex items-center gap-1.5">
                 <Check className="w-4 h-4 text-bamboo-shoot" />
                 <span>{locale === 'en' ? 'Standard Features' : 'Đặc điểm tiêu chuẩn'}</span>
               </h4>
-              <ul className="space-y-1.5 flex-1">
+              <ul className="space-y-2 flex-1">
                 {room.features.map((feat: string, i: number) => (
-                  <li key={i} className="flex items-start gap-2 text-xs text-espresso/90">
+                  <li key={i} className="flex items-start gap-2.5 text-xs text-espresso/90">
                     <span className="text-bamboo-shoot font-bold text-xs shrink-0 mt-0.5">✓</span>
-                    <span className="leading-snug">{feat}</span>
+                    <span className="leading-relaxed">{feat}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-white/70 p-3.5 sm:p-4 rounded-2xl border border-stilt-timber/15 flex flex-col">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-espresso/70 mb-2.5 flex items-center gap-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl bg-soft-sand/35 border border-stilt-timber/15 flex flex-col">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-espresso/70 mb-3 flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-stilt-timber inline-block" />
                 <span>{locale === 'en' ? 'Room Amenities' : 'Tiện nghi phòng'}</span>
               </h4>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {room.amenities.map((amenity: string, i: number) => (
                   <span
                     key={i}
-                    className="inline-flex items-center text-xs text-espresso/85 bg-soft-sand/80 px-2.5 py-1 rounded-lg border border-stilt-timber/15"
+                    className="h-8 px-3 inline-flex items-center text-xs text-espresso/85 bg-warm-paper rounded-lg border border-stilt-timber/15 leading-none"
                   >
                     {amenity}
                   </span>
@@ -304,7 +302,7 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
 
         {/* 3. MODAL FOOTER CTA */}
         <div className="shrink-0 bg-warm-paper border-t border-stilt-timber/15 z-20">
-          <div className="px-4 sm:px-6 py-3 sm:py-3.5 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
+          <div className="px-6 sm:px-8 py-4 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
             <span className="text-[11px] sm:text-xs text-espresso/70 whitespace-nowrap font-medium">
               {locale === 'en' ? '24/7 Front Desk • Check-in 14:00 - Check-out 12:00' : 'Lễ tân phục vụ 24/7 • Check-in 14:00 - Check-out 12:00'}
             </span>
@@ -314,7 +312,7 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
                   href={room.vr360Url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-2 rounded-xl bg-white hover:bg-soft-sand text-espresso border border-stilt-timber/30 text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer active:scale-95"
+                  className="h-11 px-4 sm:px-5 rounded-lg bg-white hover:bg-soft-sand text-espresso border border-stilt-timber/30 text-xs sm:text-sm font-medium shadow-2xs transition-colors inline-flex items-center justify-center gap-2 cursor-pointer leading-none"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-terracotta" />
                   <span>{locale === 'en' ? 'VR 360°' : 'Xem VR 360°'}</span>
@@ -325,7 +323,7 @@ export function RoomDetailModal({ room, onClose, onBookRoom }: RoomDetailModalPr
                   onClose();
                   onBookRoom(room.name);
                 }}
-                className="px-4 sm:px-5 py-2 rounded-xl bg-terracotta hover:bg-[#a15f4d] text-warm-paper text-xs sm:text-sm font-semibold shadow-md transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+                className="h-11 px-6 sm:px-7 rounded-lg bg-terracotta hover:bg-terracotta/90 text-warm-paper text-xs sm:text-sm font-medium shadow-xs transition-colors inline-flex items-center justify-center gap-2 cursor-pointer leading-none"
               >
                 <Calendar className="w-4 h-4" />
                 <span>{locale === 'en' ? 'Book this room now' : 'Đặt phòng này ngay'}</span>
