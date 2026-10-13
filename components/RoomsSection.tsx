@@ -75,11 +75,11 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
   };
 
   return (
-    <section id="rooms" className="py-16 md:py-24 bg-soft-sand/70 scroll-mt-16">
+    <section id="rooms" className="section-py bg-soft-sand/70 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="mb-12 text-center max-w-3xl mx-auto">
+        <div className="mb-12 text-center max-w-4xl mx-auto">
           <p className="text-body-sm uppercase tracking-[0.2em] text-bamboo-shoot font-semibold mb-3">
             {t.rooms?.tagline || 'MƠ CÓ GÌ'}
           </p>
@@ -97,10 +97,6 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
         <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-12">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
-            const count = cat.id === 'all'
-              ? allRooms.length
-              : allRooms.filter((r: RoomItem) => r.category === cat.id).length;
-
             return (
               <button
                 key={cat.id}
@@ -114,12 +110,6 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                   }`}
               >
                 <span>{cat.label}</span>
-                <span
-                  className={`text-[11px] h-5 px-2 rounded-md inline-flex items-center justify-center leading-none ${isActive ? 'bg-warm-paper/30 text-warm-paper font-bold' : 'bg-stilt-timber/15 text-espresso/80'
-                    }`}
-                >
-                  {count}
-                </span>
               </button>
             );
           })}
@@ -154,17 +144,17 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                     {/* Top Badges: Category on left, Capacity on right */}
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5 flex-wrap max-w-[70%]">
-                        <span className="px-3 py-1 bg-terracotta text-warm-paper text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
+                        <span className="px-4 py-1.5 bg-terracotta text-warm-paper text-xs font-semibold rounded-full shadow-md whitespace-nowrap">
                           {getCategoryLabel(room.category)}
                         </span>
                         {room.code && (
-                          <span className="px-3 py-1 bg-black/70 backdrop-blur-md text-warm-paper text-xs font-semibold rounded-full shadow-md border border-white/15 whitespace-nowrap">
+                          <span className="px-4 py-1.5 bg-black/70 backdrop-blur-md text-warm-paper text-xs font-semibold rounded-full shadow-md border border-white/15 whitespace-nowrap">
                             {room.code}
                           </span>
                         )}
                       </div>
 
-                      <div className="px-3 py-1 bg-bamboo-shoot text-white text-xs font-semibold rounded-full shadow-md flex items-center gap-1.5 backdrop-blur-xs shrink-0">
+                      <div className="px-4 py-1.5 bg-bamboo-shoot text-white text-xs font-semibold rounded-full shadow-md flex items-center gap-1.5 backdrop-blur-xs shrink-0">
                         <Users className="w-3.5 h-3.5" />
                         <span>{room.capacity}</span>
                       </div>
@@ -178,7 +168,7 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="h-8 px-3.5 bg-white/95 hover:bg-white text-espresso text-xs font-medium rounded-lg shadow-md inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-white/80 backdrop-blur-xs leading-none"
+                          className="h-9 px-4 bg-white/95 hover:bg-white text-espresso text-xs font-medium rounded-lg shadow-md inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-white/80 backdrop-blur-xs leading-none"
                         >
                           <Sparkles className="w-3.5 h-3.5 text-terracotta shrink-0" />
                           <span>VR 360°</span>
@@ -198,8 +188,8 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
                             type="button"
                             onClick={(e) => handleThumbnailClick(room.id, img, e)}
                             className={`relative w-12 h-9 rounded-md overflow-hidden shrink-0 border-2 transition-all duration-200 cursor-pointer ${isSelected
-                                ? 'border-terracotta scale-105 shadow-sm'
-                                : 'border-transparent opacity-70 hover:opacity-100'
+                              ? 'border-terracotta scale-105 shadow-sm'
+                              : 'border-transparent opacity-70 hover:opacity-100'
                               }`}
                           >
                             <Image

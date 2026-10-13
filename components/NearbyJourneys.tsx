@@ -14,21 +14,27 @@ export function NearbyJourneys() {
   const dialog = useRef<HTMLDialogElement>(null);
   const copy = (vi: string, english: string) => en ? english : vi;
   const plans = [
-    { title: copy('Ghé Hòa Bình trước khi về Mơ', 'Explore Hòa Bình before arriving at Mơ'), sub: copy('Điểm dừng trên đường tới khu nghỉ dưỡng', 'Stops on your way to the retreat'), image: '/assets/img/hero-poster.jpg', steps: [
-      [copy('Khám phá Hòa Bình', 'Explore Hòa Bình'), copy('Dừng chân ở khu vực TP. Hòa Bình, chọn ghé Thủy điện Hòa Bình hoặc Chùa Phật Quang.', 'Stop in the Hòa Bình city area and choose to visit the hydropower plant or Phật Quang Pagoda.')],
-      [copy('Về Mơ dùng bữa', 'Lunch at Mơ'), copy('Trở về Mơ, thưởng thức bữa trưa và nghỉ ngơi sau hành trình.', 'Return to Mơ for lunch and a rest after your journey.')],
-      [copy('Nhận phòng & thảnh thơi', 'Check in & unwind'), copy('Nhận phòng theo giờ xác nhận, dạo khuôn viên và tận hưởng không gian bên hồ.', 'Check in at your confirmed time, stroll around and enjoy the lakeside setting.')],
-    ] },
-    { title: copy('Một ngày khám phá văn hóa', 'A day exploring local culture'), sub: copy('Gợi ý trải nghiệm tại Bản Sưng', 'An introduction to Sưng village'), image: '/assets/img/nh-mt-img2947.webp', steps: [
-      [copy('Ghé Bản Sưng', 'Visit Sưng village'), copy('Gợi ý tìm hiểu văn hóa người Dao Tiền và không gian bản làng.', 'Discover Dao Tiền culture and village life.')],
-      [copy('Dùng bữa & nghỉ ngơi', 'Lunch & rest'), copy('Sắp xếp điểm dùng bữa theo phương án đã đặt trước.', 'Arrange lunch according to your pre-booked plan.')],
-      [copy('Trở về Mơ', 'Return to Mơ'), copy('Dành buổi chiều nghỉ ngơi và thư giãn tại khu nghỉ dưỡng.', 'Spend the afternoon resting and relaxing at the retreat.')],
-    ] },
-    { title: copy('Đi tìm một khoảng thiên nhiên', 'Find a moment in nature'), sub: copy('Chọn Suối Ké hoặc Thác Răng', 'Choose Ké Stream or Răng Waterfall'), image: '/assets/img/campus-dji0135.webp', steps: [
-      [copy('Chọn Suối Ké hoặc Thác Răng', 'Choose Ké Stream or Răng Waterfall'), copy('Chọn một điểm đến phù hợp với điều kiện thời tiết và hành trình.', 'Choose a destination suited to the weather and your itinerary.')],
-      [copy('Nghỉ chân & dùng bữa', 'Rest & lunch'), copy('Sắp xếp bữa trưa theo tuyến di chuyển được xác nhận.', 'Arrange lunch along your confirmed route.')],
-      [copy('Về Mơ tận hưởng', 'Enjoy your time at Mơ'), copy('Trở về khu nghỉ dưỡng, nghỉ ngơi và tận hưởng các tiện ích.', 'Return to the retreat to rest and enjoy its facilities.')],
-    ] },
+    {
+      title: copy('Ghé Hòa Bình trước khi về Mơ', 'Explore Hòa Bình before arriving at Mơ'), sub: copy('Điểm dừng trên đường tới khu nghỉ dưỡng', 'Stops on your way to the retreat'), image: '/assets/img/hero-poster.jpg', steps: [
+        [copy('Khám phá Hòa Bình', 'Explore Hòa Bình'), copy('Dừng chân ở khu vực TP. Hòa Bình, chọn ghé Thủy điện Hòa Bình hoặc Chùa Phật Quang.', 'Stop in the Hòa Bình city area and choose to visit the hydropower plant or Phật Quang Pagoda.')],
+        [copy('Về Mơ dùng bữa', 'Lunch at Mơ'), copy('Trở về Mơ, thưởng thức bữa trưa và nghỉ ngơi sau hành trình.', 'Return to Mơ for lunch and a rest after your journey.')],
+        [copy('Nhận phòng & thảnh thơi', 'Check in & unwind'), copy('Nhận phòng theo giờ xác nhận, dạo khuôn viên và tận hưởng không gian bên hồ.', 'Check in at your confirmed time, stroll around and enjoy the lakeside setting.')],
+      ]
+    },
+    {
+      title: copy('Một ngày khám phá văn hóa', 'A day exploring local culture'), sub: copy('Gợi ý trải nghiệm tại Bản Sưng', 'An introduction to Sưng village'), image: '/assets/img/nh-mt-img2947.webp', steps: [
+        [copy('Ghé Bản Sưng', 'Visit Sưng village'), copy('Gợi ý tìm hiểu văn hóa người Dao Tiền và không gian bản làng.', 'Discover Dao Tiền culture and village life.')],
+        [copy('Dùng bữa & nghỉ ngơi', 'Lunch & rest'), copy('Sắp xếp điểm dùng bữa theo phương án đã đặt trước.', 'Arrange lunch according to your pre-booked plan.')],
+        [copy('Trở về Mơ', 'Return to Mơ'), copy('Dành buổi chiều nghỉ ngơi và thư giãn tại khu nghỉ dưỡng.', 'Spend the afternoon resting and relaxing at the retreat.')],
+      ]
+    },
+    {
+      title: copy('Đi tìm một khoảng thiên nhiên', 'Find a moment in nature'), sub: copy('Chọn Suối Ké hoặc Thác Răng', 'Choose Ké Stream or Răng Waterfall'), image: '/assets/img/campus-dji0135.webp', steps: [
+        [copy('Chọn Suối Ké hoặc Thác Răng', 'Choose Ké Stream or Răng Waterfall'), copy('Chọn một điểm đến phù hợp với điều kiện thời tiết và hành trình.', 'Choose a destination suited to the weather and your itinerary.')],
+        [copy('Nghỉ chân & dùng bữa', 'Rest & lunch'), copy('Sắp xếp bữa trưa theo tuyến di chuyển được xác nhận.', 'Arrange lunch along your confirmed route.')],
+        [copy('Về Mơ tận hưởng', 'Enjoy your time at Mơ'), copy('Trở về khu nghỉ dưỡng, nghỉ ngơi và tận hưởng các tiện ích.', 'Return to the retreat to rest and enjoy its facilities.')],
+      ]
+    },
   ];
   const places = [
     { name: copy('Bản Sưng', 'Sưng Village'), icon: Landmark, text: copy('Gợi ý tìm hiểu văn hóa người Dao Tiền.', 'An introduction to Dao Tiền culture.'), extra: copy('Liên hệ Mơ để sắp xếp người hướng dẫn và hoạt động phù hợp trước chuyến đi.', 'Contact Mơ in advance to arrange a guide and suitable activities.') },
@@ -40,7 +46,7 @@ export function NearbyJourneys() {
   ];
   const times = [copy('Buổi sáng', 'Morning'), copy('Buổi trưa', 'Midday'), copy('Buổi chiều', 'Afternoon')];
   const icons = [Sunrise, Utensils, House];
-  return <section id="nearby" className={`py-16 md:py-24 bg-warm-paper ${styles.section}`}>
+  return <section id="nearby" className={`section-py bg-warm-paper ${styles.section}`}>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className={styles.intro}>
         <p className="text-body-sm uppercase tracking-[0.2em] text-stilt-timber mb-3">{copy('Khám phá & tận hưởng', 'Explore & enjoy')}</p>

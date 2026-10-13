@@ -20,6 +20,24 @@
   --font-display: var(--font-fraunces), Georgia, serif;
 }
 
+/* ===== Section Spacing Tokens (Chỉnh padding chung cho toàn bộ các section) ===== */
+:root {
+  --section-py-mobile: 16px;   /* Padding trên/dưới cho mobile */
+  --section-py-desktop: 32px;  /* Padding trên/dưới cho desktop (>= 768px) */
+}
+
+.section-py {
+  padding-top: var(--section-py-mobile);
+  padding-bottom: var(--section-py-mobile);
+}
+
+@media (min-width: 768px) {
+  .section-py {
+    padding-top: var(--section-py-desktop);
+    padding-bottom: var(--section-py-desktop);
+  }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
