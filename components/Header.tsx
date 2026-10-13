@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import { ExploreMenu } from './ExploreMenu';
 
 interface HeaderProps {
   onOpenBooking?: () => void;
@@ -52,15 +53,10 @@ export function Header({
             >
               {t.nav.story}
             </Link>
+            <ExploreMenu isHome={isHome} />
             <Link
               className="text-espresso hover:text-stilt-timber transition-colors"
-              href={getSectionHref('#rooms')}
-            >
-              {t.nav.rooms}
-            </Link>
-            <Link
-              className="text-espresso hover:text-stilt-timber transition-colors"
-              href={getSectionHref('#experiences')}
+              href={getSectionHref('#nearby')}
             >
               {t.nav.experiences}
             </Link>
@@ -144,10 +140,8 @@ export function Header({
         <Link href={getSectionHref('#story')} onClick={() => setIsMobileMenuOpen(false)}>
           {t.nav.story}
         </Link>
-        <Link href={getSectionHref('#rooms')} onClick={() => setIsMobileMenuOpen(false)}>
-          {t.nav.rooms}
-        </Link>
-        <Link href={getSectionHref('#experiences')} onClick={() => setIsMobileMenuOpen(false)}>
+        {isMobileMenuOpen && <ExploreMenu isHome={isHome} mobile onNavigate={() => setIsMobileMenuOpen(false)} />}
+        <Link href={getSectionHref('#nearby')} onClick={() => setIsMobileMenuOpen(false)}>
           {t.nav.experiences}
         </Link>
         <Link

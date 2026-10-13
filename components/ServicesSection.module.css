@@ -1,0 +1,55 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+.card {
+  background: var(--color-warm-paper, #f7f3ee);
+  border: 1px solid rgb(138 111 92 / 14%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgb(44 21 15 / 4%);
+}
+.image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.content { padding: 28px; }
+.heading {
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgb(138 111 92 / 18%);
+}
+.list { display: grid; gap: 22px; }
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  scroll-margin-top: 88px;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgb(181 110 90 / 9%);
+  color: var(--color-terracotta, #b56e5a);
+}
+.copy { min-width: 0; }
+.title { margin: 0 0 6px; }
+.description { margin: 0; }
+@media (max-width: 1023px) {
+  .grid { gap: 18px; }
+  .content { padding: 22px 18px; }
+  .item { gap: 10px; }
+}
+@media (max-width: 767px) {
+  .grid { grid-template-columns: 1fr; gap: 24px; }
+  .content { padding: 24px; }
+  .item { gap: 14px; }
+}

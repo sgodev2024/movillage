@@ -1,0 +1,25 @@
+.intro { max-width: 720px; text-align: center; margin: 0 auto 32px; }
+.options { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+.option { border: 1px solid #8a6f5c44; border-radius: 28px; padding: 10px 20px; background: transparent; }
+.option[aria-pressed='true'] { background: var(--color-terracotta); color: var(--color-warm-paper); border-color: var(--color-terracotta); }
+.map { border-radius: 20px; overflow: hidden; background: var(--color-soft-sand); }
+.map img { display: block; width: 100%; height: auto; }
+.map iframe { display: block; width: 100%; height: 460px; border: 0; }
+.caption { padding: 12px 20px; color: var(--color-stilt-timber); }
+.body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; margin-top: 32px; }
+.list { list-style: none; margin: 0; padding: 0; }
+.point { display: flex; gap: 20px; padding-bottom: 30px; }
+.point:last-child { padding-bottom: 0; }
+.marker { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; flex: 0 0 50px; border-radius: 50%; background: var(--color-soft-sand); color: var(--color-terracotta); }
+.selected .marker { background: var(--color-terracotta); color: var(--color-warm-paper); }
+.detail { min-width: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 10px; color: var(--color-terracotta); }
+.actions button { border: 0; background: none; padding: 8px 0; }
+.side { padding: 32px; background: var(--color-soft-sand); border-radius: 20px; align-self: start; }
+.tip { display: flex; gap: 14px; margin: 22px 0; }
+.tip svg { flex: 0 0 20px; margin-top: 5px; }
+.primary, .secondary { display: flex; justify-content: center; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 9px; text-align: center; }
+.primary { background: var(--color-terracotta); color: var(--color-warm-paper); }
+.secondary { border: 1px solid #8a6f5c44; margin-top: 12px; }
+.note { margin-top: 20px; color: var(--color-stilt-timber); }
+@media(max-width: 767px) { .body { grid-template-columns: 1fr; gap: 28px; } .side { padding: 24px; } .map iframe { height: 340px; } .point { gap: 16px; } }

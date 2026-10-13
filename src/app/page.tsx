@@ -5,6 +5,9 @@ import { useLanguage } from '@/context/LanguageContext';
 import { RoomsSection } from '@/components/RoomsSection';
 import { BookingModal } from '@/components/BookingModal';
 import { Header } from '@/components/Header';
+import { NearbyJourneys } from '@/components/NearbyJourneys';
+import { CheckInSection } from '@/components/CheckInSection';
+import { DirectionsSection } from '@/components/DirectionsSection';
 import Link from 'next/link';
 
 export default function Home() {
@@ -204,87 +207,10 @@ export default function Home() {
   {/*  ROOMS  */}
   <RoomsSection onOpenBooking={handleOpenBooking} />
 
-  {/*  EXPERIENCES  */}
-  <section id="experiences" className="relative min-h-screen py-24">
-    <div className="absolute inset-0 -z-10">
-      <img alt="Kayaking on Hòa Bình Lake" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/cho-thuyen-kayak.webp" />
-      <video className="absolute inset-0 h-full w-full object-cover" poster="/assets/img/cho-thuyen-kayak.webp" autoPlay loop muted playsInline preload="metadata" aria-hidden="true">
-        <source src="/assets/video/kayak-lake.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-espresso/50"></div>
-    </div>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mb-16 text-center mx-auto" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-        <div className="relative w-48 h-48 mx-auto mb-8">
-          <img alt="Mơ Village" className="object-contain" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/logo-reversed-white.svg" />
-        </div>
-        <p className="text-body-sm uppercase tracking-wide mb-4 text-apricot-blossom">{t.experiences.tagline}</p>
-        <h2 className="text-display-lg text-warm-paper mb-6">{t.experiences.title}</h2>
-        <p className="text-body-base text-warm-paper/90">{t.experiences.sub}</p>
-      </div>
+  {/*  NEARBY JOURNEYS  */}
+  <NearbyJourneys />
 
-      <div className="mb-16">
-        <h3 className="text-display-sm text-warm-paper mb-8">{t.experiences.categories.facilities}</h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-            <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
-              <div className="relative aspect-[16/10]"><img alt="Bể sục Onsen 4 mùa" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/be-suc-dji0124.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[0].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[0].desc}</p></div>
-            </div>
-          </div>
-          <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-            <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
-              <div className="relative aspect-[16/10]"><img alt="Phòng xông ướt, xông khô" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/phong-xong-img2969.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[1].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[1].desc}</p></div>
-            </div>
-          </div>
-          <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-            <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
-              <div className="relative aspect-[16/10]"><img alt="Ngâm bồn thuốc thảo dược" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/ngam-bon-img4506.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[2].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[2].desc}</p></div>
-            </div>
-          </div>
-          <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-            <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
-              <div className="relative aspect-[16/10]"><img alt="Giải trí trên hồ" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/giai-tri-tren-ho-img4621.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[3].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[3].desc}</p></div>
-            </div>
-          </div>
-          <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-            <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
-              <div className="relative aspect-[16/10]"><img alt="Tour thuyền thăm quan" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/tour-thuyen-dji0157.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[4].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[4].desc}</p></div>
-            </div>
-          </div>
-          <div data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-            <div className="bg-warm-paper rounded-lg p-6 overflow-hidden bg-warm-paper/95 backdrop-blur-sm h-full flex flex-col">
-              <div className="relative aspect-[16/10]"><img alt="Team Building" className="object-cover" style={{"position":"absolute","height":"100%","width":"100%","left":"0","top":"0","right":"0","bottom":"0"}} src="/assets/img/team-building-dji0111.webp" /></div>
-              <div className="p-5 flex-1 flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.facilitiesList[5].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.facilitiesList[5].desc}</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 className="text-display-sm text-warm-paper mb-8">{t.experiences.categories.workshops}</h3>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.workshopsList[0].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.workshopsList[0].desc}</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.workshopsList[1].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.workshopsList[1].desc}</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.workshopsList[2].title}</h4><p className="text-body-base text-espresso/90">{t.experiences.workshopsList[2].desc}</p></div>
-        </div>
-      </div>
-
-      <div className="mt-16" data-reveal style={{"opacity":"0","transform":"translateY(20px)"}}>
-        <h3 className="text-display-sm text-warm-paper mb-8">{t.experiences.categories.nearby}</h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.nearbyList[0].title}</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">{t.experiences.nearbyList[0].desc}</p><p className="text-body-sm text-stilt-timber">15km</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.nearbyList[1].title}</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">{t.experiences.nearbyList[1].desc}</p><p className="text-body-sm text-stilt-timber">8km</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.nearbyList[2].title}</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">{t.experiences.nearbyList[2].desc}</p><p className="text-body-sm text-stilt-timber">12km</p></div>
-          <div className="p-6 bg-warm-paper/95 backdrop-blur-sm rounded-lg h-full flex flex-col"><h4 className="text-body-lg font-semibold text-espresso mb-2">{t.experiences.nearbyList[3].title}</h4><p className="text-body-base text-espresso/90 mb-3 flex-1">{t.experiences.nearbyList[3].desc}</p><p className="text-body-sm text-stilt-timber">10km</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CheckInSection />
 
   {/*  GALLERY  */}
   <section id="gallery" className="py-16 md:py-24 bg-white bg-soft-sand">
@@ -322,64 +248,7 @@ export default function Home() {
   </section>
 
   {/*  DIRECTIONS  */}
-  <section id="directions" className="relative py-16 md:py-24" style={{"backgroundImage":"url(/assets/img/map-background.png)","backgroundSize":"cover","backgroundPosition":"center -100px","backgroundRepeat":"no-repeat"}}>
-    <div className="absolute inset-0 bg-espresso/60"></div>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-display-lg text-warm-paper mb-6">{t.directions.title}</h2>
-          <p className="text-body-lg text-warm-paper/90 mb-4">{t.directions.sub}</p>
-        </div>
-        <div className="space-y-4 mb-12" id="faq">
-          <div className="border-b-2 border-warm-paper/20 faq-item">
-            <button className="faq-trigger w-full py-6 flex items-center justify-between text-left hover:bg-warm-paper/10 transition-colors px-4 rounded-lg">
-              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">01</span><span className="text-body-lg font-semibold text-warm-paper">{t.directions.faqs[0].question}</span></div>
-              <span className="text-2xl text-terracotta faq-sign">+</span>
-            </button>
-            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">{t.directions.faqs[0].answer}</p></div></div>
-          </div>
-          <div className="border-b-2 border-warm-paper/20 faq-item">
-            <button className="faq-trigger w-full py-6 flex items-center justify-between text-left hover:bg-warm-paper/10 transition-colors px-4 rounded-lg">
-              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">02</span><span className="text-body-lg font-semibold text-warm-paper">{t.directions.faqs[1].question}</span></div>
-              <span className="text-2xl text-terracotta faq-sign">+</span>
-            </button>
-            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">{t.directions.faqs[1].answer}</p></div></div>
-          </div>
-          <div className="border-b-2 border-warm-paper/20 faq-item">
-            <button className="faq-trigger w-full py-6 flex items-center justify-between text-left hover:bg-warm-paper/10 transition-colors px-4 rounded-lg">
-              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">03</span><span className="text-body-lg font-semibold text-warm-paper">{t.directions.faqs[2].question}</span></div>
-              <span className="text-2xl text-terracotta faq-sign">+</span>
-            </button>
-            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">{t.directions.faqs[2].answer}</p></div></div>
-          </div>
-          <div className="border-b-2 border-warm-paper/20 faq-item">
-            <button className="faq-trigger w-full py-6 flex items-center justify-between text-left hover:bg-warm-paper/10 transition-colors px-4 rounded-lg">
-              <div className="flex items-center gap-4"><span className="text-body-lg font-semibold text-terracotta">04</span><span className="text-body-lg font-semibold text-warm-paper">{t.directions.faqs[3].question}</span></div>
-              <span className="text-2xl text-terracotta faq-sign">+</span>
-            </button>
-            <div className="overflow-hidden faq-panel" style={{"height":"0px","opacity":"0"}}><div className="pb-6 px-4 pl-16"><p className="text-body-base text-warm-paper/90 leading-relaxed">{t.directions.faqs[3].answer}</p></div></div>
-          </div>
-        </div>
-        <div className="mt-12">
-          <div className="p-8 bg-warm-paper/95 backdrop-blur-sm rounded-lg">
-            <p className="text-body-base text-espresso/80 mb-6">{t.directions.routeDesc}</p>
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4 flex-wrap justify-center">
-                <span className="text-body-lg font-semibold text-espresso">{locale === 'en' ? 'Hanoi' : 'Hà Nội'}</span>
-                <span className="text-bamboo-shoot">→</span>
-                <span className="text-body-lg font-semibold text-espresso">{locale === 'en' ? 'Hoa Lac' : 'Hòa Lạc'}</span>
-                <span className="text-bamboo-shoot">→</span>
-                <span className="text-body-lg font-semibold text-espresso">{locale === 'en' ? 'Hoa Binh' : 'Hòa Bình'}</span>
-                <span className="text-bamboo-shoot">→</span>
-                <span className="text-body-lg font-semibold text-terracotta">{locale === "en" ? "Mo Village" : "Xóm Mơ"}</span>
-              </div>
-              <a href="https://maps.app.goo.gl/7gk7cRHAvQdimFi39" target="_blank" rel="noopener noreferrer" className="inline-block bg-terracotta hover:bg-terracotta/90 text-warm-paper px-6 py-3 rounded-lg text-ui-base transition-colors whitespace-nowrap">{t.directions.openGoogleMaps}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <DirectionsSection />
 
   {/*  PACKAGES  */}
   <section id="packages" className="py-16 md:py-24 bg-white bg-warm-paper">

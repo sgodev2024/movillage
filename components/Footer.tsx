@@ -59,7 +59,7 @@ export function Footer({ currentPath }: FooterProps) {
                   {t.nav.rooms}
                 </Link>
                 <Link
-                  href="/#experiences"
+                  href="/#nearby"
                   className="text-[#2C150F] hover:text-[#B56E5A] transition-colors"
                 >
                   {t.nav.experiences}

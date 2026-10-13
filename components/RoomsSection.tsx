@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { RoomItem } from '@/data/content';
 import { RoomDetailModal } from './RoomDetailModal';
+import { ServicesSection } from './ServicesSection';
 import { Users, Bed, Maximize2, Compass, Sparkles, ArrowRight, Check } from 'lucide-react';
 
 interface RoomsSectionProps {
@@ -17,6 +18,21 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showAll, setShowAll] = useState<boolean>(false);
   const [activeImageMap, setActiveImageMap] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const selectFromHash = () => {
+      if (!window.location.hash.startsWith('#rooms?')) return;
+      const category = new URLSearchParams(window.location.hash.split('?')[1]).get('category');
+      if (category && ['Nhà Cộng Đồng', 'Nhà Đào', 'Nhà Mận', 'Nhà Mít', 'Nhà Sang', 'Nhà Táo'].includes(category)) {
+        setSelectedCategory(category);
+        setShowAll(false);
+        document.getElementById('rooms')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    selectFromHash();
+    window.addEventListener('hashchange', selectFromHash);
+    return () => window.removeEventListener('hashchange', selectFromHash);
+  }, []);
 
   const categories = [
     { id: 'all', label: locale === 'en' ? 'All' : 'Tất cả' },
@@ -68,15 +84,16 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
             {t.rooms?.tagline || 'MƠ CÓ GÌ'}
           </p>
           <h2 className="text-display-lg font-bold text-espresso mb-4 font-display">
-            {t.rooms?.title || 'Các hạng phòng nghỉ'}
+            {locale === 'en' ? 'Stay at Mơ, enjoy it all' : 'Nghỉ tại Mơ, tận hưởng trọn vẹn'}
           </h2>
           <div className="w-20 h-1 bg-terracotta/60 mx-auto mb-4 rounded-full" />
           <p className="text-body-base text-espresso/80 max-w-2xl mx-auto">
-            {t.rooms?.sub || 'Không gian nghỉ dưỡng hòa mình cùng thiên nhiên hồ Hòa Bình, kiến trúc nhà sàn truyền thống kết hợp tiện nghi cao cấp.'}
+            {locale === 'en' ? 'From lakeside houses to dining, relaxation and connection — find the experience for you.' : 'Từ những nếp nhà bên hồ đến không gian ẩm thực, thư giãn và kết nối — tìm trải nghiệm dành cho bạn.'}
           </p>
         </div>
 
         {/* Category Filter Tabs */}
+        <h3 className="text-display-sm text-espresso mb-8">{locale === 'en' ? 'Accommodation' : 'Phòng nghỉ'}</h3>
         <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-12">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
@@ -329,6 +346,7 @@ export function RoomsSection({ onOpenBooking }: RoomsSectionProps) {
             </button>
           </div>
         )}
+        <ServicesSection />
       </div>
 
       {/* Room Detail Modal for viewing full specifications & booking */}

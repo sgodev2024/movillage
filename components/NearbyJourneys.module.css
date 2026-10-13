@@ -1,0 +1,22 @@
+.section { scroll-margin-top: 64px; }
+.intro { max-width: 760px; margin: 0 auto 48px; text-align: center; }
+.choices,.timeline { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.choice { display: flex; flex-direction: column; background: var(--color-warm-paper); color: var(--color-espresso); border: 1px solid rgb(138 111 92 / 20%); border-radius: 16px; overflow: hidden; text-align: left; padding: 0; cursor: pointer; }
+.choice[aria-pressed=true] { border-color: var(--color-terracotta); box-shadow: 0 0 0 1px var(--color-terracotta); }
+.image { position: relative; display: block; width: 100%; aspect-ratio: 16/9; }
+.choiceCopy { display: block; padding: 24px; }
+.subtitle { display: block; margin-top: 8px; color: var(--color-stilt-timber); }
+.action,.detail { display: inline-flex; align-items: center; gap: 8px; color: var(--color-terracotta); }
+.action { margin-top: 18px; }
+.journey { margin: 32px 0 48px; padding: 32px; background: var(--color-soft-sand); border-radius: 20px; }
+.step { border-top: 1px solid rgb(138 111 92 / 30%); padding-top: 20px; }
+.time { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; color: var(--color-terracotta); }
+.places { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+.place { display: flex; align-items: flex-start; gap: 18px; border: 1px solid rgb(138 111 92 / 18%); border-radius: 16px; padding: 24px; }
+.icon { flex: 0 0 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--color-soft-sand); color: var(--color-terracotta); border-radius: 12px; }
+.detail { border: 0; padding: 6px 0; background: transparent; cursor: pointer; }
+.cta { text-align: center; margin-top: 32px; }
+.dialog { max-width: min(520px,calc(100% - 32px)); max-height: calc(100dvh - 48px); overflow: auto; border: 1px solid rgb(138 111 92 / 30%); border-radius: 20px; padding: 36px; background: var(--color-warm-paper); color: var(--color-espresso); }
+.dialog::backdrop { background: rgb(44 21 15 / 55%); }
+.close { display: flex; margin-left: auto; padding: 8px; background: transparent; border: 0; color: inherit; cursor: pointer; }
+@media(max-width:767px) { .choices,.timeline,.places { grid-template-columns: 1fr; } .journey { padding: 24px; } .place { padding: 22px; } .dialog { padding: 24px; } }
